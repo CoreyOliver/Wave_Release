@@ -14,11 +14,14 @@ app.use(logger("dev"));
 app.use(cors());
 
 // connections
+const connectDB = require('./config/main.database')
 const mainRoutes = require('./routes/main.routes')
+
 
 //routes init
 
 app.use('/', mainRoutes)
+
 
 //listening
 
