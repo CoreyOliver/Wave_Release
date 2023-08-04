@@ -8,13 +8,13 @@ const connection = mySQL.createConnection(  {
     port: 3306,
     database: 'wave_release',
     user: 'root',
-    password: 'CoreBrah54!!'
+    password: process.env.ROOT_PW
 })
 
 
 const connectDB = connection.connect(  function(err) {
     if(err) {
-        console.log('error occured while connecting')
+        console.log(err)
     } else {
         console.log('successfully connected to mySQL')
     }
