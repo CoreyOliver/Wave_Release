@@ -3,7 +3,7 @@ const mySQL = require('mysql')
 
 //connection
 
-const connection = mySQL.createConnection(  {
+const connectDB = mySQL.createConnection(  {
     host: 'localhost',
     port: 3306,
     database: 'wave_release',
@@ -12,7 +12,7 @@ const connection = mySQL.createConnection(  {
 })
 
 
-const connectDB = connection.connect(  function(err) {
+const connectToDB = connectDB.connect(  function(err) {
     if(err) {
         console.log(err)
     } else {
