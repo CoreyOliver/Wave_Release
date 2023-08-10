@@ -5,6 +5,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 //components & pages
 import App from './App.jsx'
+import ErrorPage from './components/ErrorPage.jsx';
+import WaveTable from './components/WaveTable.jsx';
 
 //styling
 import './index.css'
@@ -17,8 +19,12 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-    //errorElement: <ErrorPage />,
-    //children: []
+    errorElement: <ErrorPage />,
+    children: [{
+      index: true,
+      // loader: getWaves,
+      element: <WaveTable />
+    }]
   }
 ])
 

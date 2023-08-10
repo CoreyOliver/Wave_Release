@@ -1,11 +1,15 @@
+import Navbar from "./components/Navbar"
+import { Outlet } from 'react-router-dom'
+import './index.css'
 
 
 function App() {
 
   return (
-    <div className="flex items-center">
-     <h1 className="m-auto">hello</h1>
-    </div>
+    <div className="flex flex-col">
+    <Navbar />
+    <Outlet />
+  </div>
   )
 }
 
