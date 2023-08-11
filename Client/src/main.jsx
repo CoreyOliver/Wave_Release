@@ -11,7 +11,8 @@ import WaveTable from './components/WaveTable.jsx';
 //styling
 import './index.css'
 
-//actions
+//actions & loaders
+import {loader as getWaves} from './components/WaveTable.jsx';
 
 //router
 
@@ -22,7 +23,7 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [{
       index: true,
-      // loader: getWaves,
+      loader: getWaves,
       element: <WaveTable />
     }]
   }
