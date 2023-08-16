@@ -6,13 +6,15 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 //components & pages
 import App from './App.jsx'
 import ErrorPage from './components/ErrorPage.jsx';
-import WaveTable from './components/WaveTable.jsx';
+// import WaveTable from './components/WaveTable.jsx';
+import WholesaleWaveTable from './components/WholesaleWaveTable.jsx';
 
 //styling
 import './index.css'
 
 //actions & loaders
-import {loader as getWaves} from './components/WaveTable.jsx';
+// import {loader as getWaves} from './components/WaveTable.jsx';
+import {loader as getWholesaleWaves } from './components/WholesaleWaveTable.jsx'
 
 //router
 
@@ -23,8 +25,8 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [{
       index: true,
-      loader: getWaves,
-      element: <WaveTable />
+      loader: getWholesaleWaves,
+      element: <WholesaleWaveTable />
     }]
   }
 ])

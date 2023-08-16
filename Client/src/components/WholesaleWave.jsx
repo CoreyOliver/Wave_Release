@@ -1,50 +1,40 @@
-import React from 'react'
+import React from "react";
 
-const WholesaleWave = () => {
+const WholesaleWave = ({location, date,  wave, customer, units, startShip, cancelDate, tenderDate, shipDate, printed}) => {
   return (
-    <div className="pt-32 flex justify-center items-center px-8 mx-auto">
-      <table className="table mx-4 mt-4 pb-8">
-        <tbody>
-          <tr className="">
-            <th scope="col" className="mx-2 px-4">
-              WH
-            </th>
-            <th scope="col" className="mx-2 px-4">
-              Date
-            </th>
-            <th scope="col" className="mx-2 px-4">
-              User
-            </th>
-            <th scope="col" className="mx-2 px-4">
-              Wave
-            </th>
-            <th scope="col" className="mx-2 px-4">
-              Account
-            </th>
-            <th scope="col" className="mx-2 px-4">
-              Units
-            </th>
-            <th scope="col" className="mx-2 px-4">
-              Start Ship
-            </th>
-            <th scope="col" className="mx-2 px-4">
-              Cancel Date
-            </th>
-            <th scope="col" className="mx-2 px-4">
-              Tender Date
-            </th>
-            <th scope="col" className="mx-2 px-4">
-              Ship Date
-            </th>
-            <th scope="col" className="mx-2 px-4">
-              Printed
-            </th>
+    <tr className="">
+      <th scope="col" className="mx-2 px-4">
+        {location}
+      </th>
+      <th scope="col" className="mx-2 px-4">
+        {date}
+      </th>
+      <th scope="col" className="mx-2 px-4">
+        {wave}
+      </th>
+      <th scope="col" className="mx-2 px-4">
+        {customer}
+      </th>
+      <th scope="col" className="mx-2 px-4">
+        {units}
+      </th>
+      <th scope="col" className="mx-2 px-4">
+        {startShip}
+      </th>
+      <th scope="col" className="mx-2 px-4">
+        {cancelDate}
+      </th>
+      <th scope="col" className="mx-2 px-4">
+        {tenderDate}
+      </th>
+      <th scope="col" className="mx-2 px-4">
+        {shipDate}
+      </th>
+      {/* <th scope="col" className="mx-2 px-4">
+        {printed}
+      </th> */}
+    </tr>
+  );
+};
 
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  )
-}
-
-export default WholesaleWave
+export default WholesaleWave;

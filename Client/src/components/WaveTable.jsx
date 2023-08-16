@@ -1,8 +1,8 @@
 import React from "react";
-import Wave from "./Wave";
+import Wave from "./WholesaleWave";
 
 import { useLoaderData } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export async function loader() {
   const res = await fetch('http://localhost:3000');
@@ -15,6 +15,10 @@ const WaveTable = () => {
   
   const [ waveData, setWaveData] = useState(waves)
   
+  useEffect( () => (
+    console.log(waveData)
+  ), waveData)
+
   console.log(waves[0])
 
   return (
