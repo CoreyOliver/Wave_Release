@@ -21,7 +21,7 @@ const WholesaleWave = ({
       <th scope="col" className="sm:text-xs xl:text-sm mx-2 px-4 bg-blue-300">
         {location}
       </th>
-      <th scope="col" className="sm:text-xs xl:text-sm mx-2 px-4 bg-yellow-300">
+      <th scope="col" className="sm:text-xs xl:text-sm mx-2 px-4 bg-yellow-300 hidden md:table-cell">
         {user}
       </th>
       <th scope="col" className="sm:text-xs xl:text-sm mx-2 px-4 bg-pink-300">
