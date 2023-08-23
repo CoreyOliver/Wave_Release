@@ -8,13 +8,15 @@ export async function loader() {
   const waves = await res.json();
   return waves;
 }
-const today = new Date()
 
 const WholesaleWaveTable = () => {
   const waves = useLoaderData();
   const [waveData, setWaveData] = useState(waves);
   const [formData, setFormData] = useState({
-    waveDate: new Date(),
+    waveDate: (new Date()).toLocaleDateString('en-US', {
+      day:'2-digit',
+      month:'2-digit'
+    }),
     waveLocation: "",
     waveUser: "",
     waveNumber: "",
