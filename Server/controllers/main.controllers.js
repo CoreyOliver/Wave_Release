@@ -9,5 +9,12 @@ module.exports = {
         } catch (error) {
             console.log(error)
         }
+    },
+    addWholesaleWave: async (req, res) => {
+        try {
+            
+        } catch (error) {
+            console.log(error)
+        }
     }
 };

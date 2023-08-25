@@ -13,8 +13,10 @@ import WholesaleWaveTable from './components/WholesaleWaveTable.jsx';
 import './index.css'
 
 //actions & loaders
+
 // import {loader as getWaves} from './components/WaveTable.jsx';
 import {loader as getWholesaleWaves } from './components/WholesaleWaveTable.jsx'
+import {action as addWholesaleWave} from './function/addWholesaleWave.js'
 
 //router
 
@@ -26,7 +28,8 @@ const router = createBrowserRouter([
     children: [{
       index: true,
       loader: getWholesaleWaves,
-      element: <WholesaleWaveTable />
+      element: <WholesaleWaveTable />,
+      action: addWholesaleWave,
     }]
   }
 ])
