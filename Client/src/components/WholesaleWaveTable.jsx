@@ -29,6 +29,21 @@ const WholesaleWaveTable = () => {
     wavePrinted: "N",
   });
 
+  const deleteSelectedWave = async (waveToDelete) => {
+    try {
+      const res = await fetch(`http://localhost:3000/delete/${waveToDelete}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        }
+      })
+      const data = await res.json()
+      console.log(data)
+      
+    } catch (error) {
+      console.log(error)
+    }
+  };
   const wholesaleWavesToList = waveData.map((wave) => (
     <WholesaleWave
       key={wave.waveNumber}
@@ -43,6 +58,7 @@ const WholesaleWaveTable = () => {
       shipDate={wave.shipDate}
       printed={wave.printed}
       user={wave.user}
+      deleteSelectedWave={deleteSelectedWave}
     />
   ));
 
@@ -59,7 +75,7 @@ const WholesaleWaveTable = () => {
 
   return (
     <div className="pt-32 flex justify-center items-center px-8 mx-auto">
-      <Form method="POST" id="wholesaleAddForm">
+      <Form method="POST" id="wholesaleAddForm" className="">
         <table className="table mx-4 mt-4 pb-8">
           <thead>
             <tr className="">
@@ -71,13 +87,13 @@ const WholesaleWaveTable = () => {
               </th>
               <th
                 scope="col"
-                className="mx-2 px-4 bg-blue-400 border-slate-600"
+                className="mx-2 px-2 bg-blue-400 border-slate-600 hidden md:table-cell"
               >
                 WH
               </th>
               <th
                 scope="col"
-                className="mx-2 px-4 bg-yellow-400 border-slate-600"
+                className="mx-2 px-4 bg-yellow-400 border-slate-600 hidden md:table-cell"
               >
                 Waver
               </th>
@@ -127,7 +143,7 @@ const WholesaleWaveTable = () => {
           </thead>
           <tbody>
             {wholesaleWavesToList}
-            <tr>
+            <tr className="">
               <th
                 scope="col"
                 className="sm:text-xs xl:text-sm mx-2 px-4 bg-orange-300"
@@ -139,6 +155,7 @@ const WholesaleWaveTable = () => {
                   name="waveDate"
                   value={formData.waveDate}
                   onChange={(e) => handleChange(e)}
+                  autoComplete="off"
                 />
               </th>
               <th
@@ -147,11 +164,13 @@ const WholesaleWaveTable = () => {
               >
                 <input
                   className="w-24 text-xs text-center"
-                  type="text"
+                  type="list"
+                  list="locations"
                   placeholder="WH"
                   name="waveLocation"
                   value={formData.waveLocation}
                   onChange={(e) => handleChange(e)}
+                  autoComplete="off"
                 />
               </th>
               <th
@@ -165,6 +184,7 @@ const WholesaleWaveTable = () => {
                   name="waveUser"
                   value={formData.waveUser}
                   onChange={(e) => handleChange(e)}
+                  autoComplete="off"
                 />
               </th>
               <th
@@ -178,6 +198,7 @@ const WholesaleWaveTable = () => {
                   name="waveNumber"
                   value={formData.waveNumber}
                   onChange={(e) => handleChange(e)}
+                  autoComplete="off"
                 />
               </th>
               <th
@@ -186,11 +207,13 @@ const WholesaleWaveTable = () => {
               >
                 <input
                   className="w-24 text-xs text-center"
-                  type="text"
+                  type="list"
+                  list="customers"
                   placeholder="Customer"
                   name="waveCustomer"
                   value={formData.waveCustomer}
                   onChange={(e) => handleChange(e)}
+                  autoComplete="off"
                 />
               </th>
               <th
@@ -204,6 +227,7 @@ const WholesaleWaveTable = () => {
                   name="waveCount"
                   value={formData.waveCount}
                   onChange={(e) => handleChange(e)}
+                  autoComplete="off"
                 />
               </th>
               <th
@@ -217,6 +241,7 @@ const WholesaleWaveTable = () => {
                   name="waveStartShip"
                   value={formData.waveStartShip}
                   onChange={(e) => handleChange(e)}
+                  autoComplete="off"
                 />
               </th>
               <th
@@ -230,6 +255,7 @@ const WholesaleWaveTable = () => {
                   name="waveCancelDate"
                   value={formData.waveCancelDate}
                   onChange={(e) => handleChange(e)}
+                  autoComplete="off"
                 />
               </th>
               <th
@@ -243,6 +269,7 @@ const WholesaleWaveTable = () => {
                   name="waveTenderDate"
                   value={formData.waveTenderDate}
                   onChange={(e) => handleChange(e)}
+                  autoComplete="off"
                 />
               </th>
               <th
@@ -256,6 +283,7 @@ const WholesaleWaveTable = () => {
                   name="waveShipDate"
                   value={formData.waveShipDate}
                   onChange={(e) => handleChange(e)}
+                  autoComplete="off"
                 />
               </th>
               <th
@@ -269,6 +297,7 @@ const WholesaleWaveTable = () => {
                   name="wavePrinted"
                   value={formData.wavePrinted}
                   onChange={(e) => handleChange(e)}
+                  autoComplete="off"
                 />
               </th>
             </tr>
@@ -282,6 +311,23 @@ const WholesaleWaveTable = () => {
           </tbody>
         </table>
       </Form>
+
+      <datalist id="locations">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+      </datalist>
+
+      <datalist id="customers">
+        <option value="Dillards">Dillards</option>
+        <option value="Belk">Belk</option>
+        <option value="Macys">Macys</option>
+        <option value="AAFES">AAFES</option>
+        <option value="Zappos">Zappos</option>
+        <option value="Marine">Marine</option>
+        <option value="Navy Exchange">Navy Exchange</option>
+      </datalist>
     </div>
   );
 };

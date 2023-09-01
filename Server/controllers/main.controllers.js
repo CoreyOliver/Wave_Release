@@ -13,7 +13,15 @@ module.exports = {
     addWholesaleWave: async (req, res) => {
         const updateDate = (date) => {
             const currentYear = new Date().getFullYear()
-            return `${currentYear}-${date.split('/').join('-')}`            
+            let month = date.split('/')[0]
+            let day = date.split('/')[1]
+            if(month.length < 2) {
+                month = `0${month}`
+            }
+            if(day.length < 2) {
+                day = `0${day}`
+            }
+            return `${currentYear}-${month}-${day}`            
         }
         const startShipToAdd = updateDate(req.body.waveStartShip)
         const cancelDateToAdd = updateDate(req.body.waveCancelDate)
@@ -21,11 +29,26 @@ module.exports = {
         const tenderDateToAdd = updateDate(req.body.waveTenderDate)
         const waveDateToAdd = updateDate(req.body.waveDate)
         try {
-            const [rows] = await connectDB.query(`INSERT INTO 'wave_release'.'wholesaleData' ('whLocation', 'waveNumber', 'customer', 'unitCount', 'startShip', 'cancelDate', 'tenderDate', 'shipDate', 'printed', 'waveDate', 'user') VALUES ('${req.body.waveLocation}', '${req.body.waveNumber}', '${req.body.waveCustomer}', '${req.body.waveCount}', '${startShipToAdd}', '${cancelDateToAdd}', '${tenderDateToAdd}', '${shipDateToAdd}', '${req.body.wavePrinted}', '${waveDateToAdd}', '${req.body.waveUser.toUpperCase()}');`)
-            console.log(req.body)
+            const [rows] = await connectDB.query(`INSERT INTO wave_release.wholesaleData (whLocation, waveNumber, customer, unitCount, startShip, cancelDate, tenderDate, shipDate, printed, waveDate, user) VALUES ('${req.body.waveLocation}', '${req.body.waveNumber}', '${req.body.waveCustomer}', '${req.body.waveCount}', '${startShipToAdd}', '${cancelDateToAdd}', '${tenderDateToAdd}', '${shipDateToAdd}', '${req.body.wavePrinted}', '${waveDateToAdd}', '${req.body.waveUser.toUpperCase()}');`)
 
-            //need to adjust the date format for the request
+            res.json(rows)
             
+        } catch (error) {
+            console.log(error)
+        }
+    },
+    editWave: async (req, res) => {
+        try {
+            console.log(req)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    ,
+    deleteWave: async (req, res) => {
+        try {
+            const [rows] = await connectDB.query(`DELETE FROM wave_release.wholesaleData WHERE ('waveNumber' = '${req.params.wave}');`)
+            res.json(rows)
         } catch (error) {
             console.log(error)
         }

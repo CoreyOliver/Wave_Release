@@ -6,6 +6,12 @@ const mainControllers = require("../controllers/main.controllers");
 router.get('/', mainControllers.getRoot)
 
 //POST
-router.post('/addWS', mainControllers.addWholesaleWave)
+router.post('/add/WS', mainControllers.addWholesaleWave)
+
+//PUT
+router.put('/edit/:wave', mainControllers.editWave)
+
+//Delete
+router.delete('/delete/:wave', mainControllers.deleteWave)
 
 module.exports = router;

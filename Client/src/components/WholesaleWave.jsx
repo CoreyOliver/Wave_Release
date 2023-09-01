@@ -1,4 +1,5 @@
 import React from "react";
+import { GrEdit, GrTrash } from "react-icons/gr";
 
 const WholesaleWave = ({
   location,
@@ -11,17 +12,24 @@ const WholesaleWave = ({
   tenderDate,
   shipDate,
   printed,
-  user
+  user,
+  deleteSelectedWave
 }) => {
   return (
     <tr className="">
       <th scope="col" className="sm:text-xs xl:text-sm mx-2 px-4 bg-orange-300">
         {date}
       </th>
-      <th scope="col" className="sm:text-xs xl:text-sm mx-2 px-4 bg-blue-300">
+      <th
+        scope="col"
+        className="sm:text-xs xl:text-sm mx-2 px-2 bg-blue-300 hidden md:table-cell"
+      >
         {location}
       </th>
-      <th scope="col" className="sm:text-xs xl:text-sm mx-2 px-4 bg-yellow-300 hidden md:table-cell">
+      <th
+        scope="col"
+        className="sm:text-xs xl:text-sm mx-2 px-4 bg-yellow-300 hidden md:table-cell"
+      >
         {user}
       </th>
       <th scope="col" className="sm:text-xs xl:text-sm mx-2 px-4 bg-pink-300">
@@ -45,8 +53,22 @@ const WholesaleWave = ({
       <th scope="col" className="sm:text-xs xl:text-sm mx-2 px-4 bg-purple-300">
         {shipDate}
       </th>
-      <th scope="col" className="sm:text-xs xl:text-sm mx-2 px-4 bg-orange-300">
+      <th
+        scope="col"
+        className="sm:text-xs xl:text-sm mx-2 px-4 bg-orange-300 "
+      >
         {printed}
+      </th>
+      <th className="rounded-xl bg-emerald-400">
+        <GrEdit size={20} className="rounded-sm  mx-2" />
+      </th>
+      <th className="rounded-xl bg-emerald-400">
+          <GrTrash 
+          size={20}
+          className="rounded-sm mx-2"
+          onClick={() => deleteSelectedWave(wave)}
+          cursor="pointer"
+          />
       </th>
     </tr>
   );
