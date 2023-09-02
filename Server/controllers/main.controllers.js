@@ -47,7 +47,8 @@ module.exports = {
     ,
     deleteWave: async (req, res) => {
         try {
-            const [rows] = await connectDB.query(`DELETE FROM wave_release.wholesaleData WHERE ('waveNumber' = '${req.params.wave}');`)
+            console.log(req.params.wave)
+            const [rows] = await connectDB.query(`DELETE FROM wholesaleData WHERE (waveNumber = '${req.params.wave}');`)
             res.json(rows)
         } catch (error) {
             console.log(error)
