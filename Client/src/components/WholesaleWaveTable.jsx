@@ -73,6 +73,10 @@ const WholesaleWaveTable = () => {
     });
   };
 
+  const editWave = (e) => {
+    console.log(e,'edit wave')
+  }
+
   return (
     <div className="pt-32 flex justify-center items-center px-8 mx-auto">
       <Form method="POST" id="wholesaleAddForm" className="">
