@@ -13,7 +13,8 @@ const WholesaleWave = ({
   shipDate,
   printed,
   user,
-  deleteSelectedWave
+  deleteSelectedWave,
+  editWave,
 }) => {
   return (
     <tr className="">
@@ -60,15 +61,20 @@ const WholesaleWave = ({
         {printed}
       </th>
       <th className="rounded-xl bg-emerald-400">
-        <GrEdit size={20} className="rounded-sm  mx-2" />
+        <GrEdit
+          size={20}
+          className="rounded-sm  mx-2"
+          onClick={() => editWave(wave)}
+          cursor="pointer"
+        />
       </th>
       <th className="rounded-xl bg-emerald-400">
-          <GrTrash 
+        <GrTrash
           size={20}
           className="rounded-sm mx-2"
           onClick={() => deleteSelectedWave(wave)}
           cursor="pointer"
-          />
+        />
       </th>
     </tr>
   );

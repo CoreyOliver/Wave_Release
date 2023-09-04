@@ -35,15 +35,19 @@ const WholesaleWaveTable = () => {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
-        }
-      })
-      const data = await res.json()
-      location.reload()
-      
+        },
+      });
+      const data = await res.json();
+      location.reload();
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   };
+
+  const editWave = (e) => {
+    console.log(e, "edit wave");
+  };
+
   const wholesaleWavesToList = waveData.map((wave) => (
     <WholesaleWave
       key={wave.waveNumber}
@@ -59,6 +63,7 @@ const WholesaleWaveTable = () => {
       printed={wave.printed}
       user={wave.user}
       deleteSelectedWave={deleteSelectedWave}
+      editWave={editWave}
     />
   ));
 
@@ -72,10 +77,6 @@ const WholesaleWaveTable = () => {
       };
     });
   };
-
-  const editWave = (e) => {
-    console.log(e,'edit wave')
-  }
 
   return (
     <div className="pt-32 flex justify-center items-center px-8 mx-auto">
