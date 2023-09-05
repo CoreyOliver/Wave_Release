@@ -16,7 +16,7 @@ import './index.css'
 
 // import {loader as getWaves} from './components/WaveTable.jsx';
 import {loader as getWholesaleWaves } from './components/WholesaleWaveTable.jsx'
-import {action as addWholesaleWave} from './function/addWholesaleWave.js'
+import {action as addWholesaleWave} from './function/addWholesaleWave.action.js'
 
 //router
 

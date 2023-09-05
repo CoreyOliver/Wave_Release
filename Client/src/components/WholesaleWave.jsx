@@ -1,5 +1,11 @@
 import React from "react";
-import { GrEdit, GrTrash } from "react-icons/gr";
+import {
+  GrEdit,
+  GrTrash,
+  GrCheckbox,
+  GrCheckboxSelected,
+} from "react-icons/gr";
+import { updateWavePrinted } from "../function/waveUpdate";
 
 const WholesaleWave = ({
   location,
@@ -58,7 +64,11 @@ const WholesaleWave = ({
         scope="col"
         className="sm:text-xs xl:text-sm mx-2 px-4 bg-orange-300 "
       >
-        {printed}
+        {printed === "Y" ? (
+          <GrCheckboxSelected size={20} className="mx-auto cursor-pointer" onClick={() => updateWavePrinted(wave)}/>
+        ) : (
+          <GrCheckbox size={20} className="mx-auto cursor-pointer" onClick={() => updateWavePrinted(wave)}/>
+        )}
       </th>
       <th className="rounded-xl bg-emerald-400">
         <GrEdit

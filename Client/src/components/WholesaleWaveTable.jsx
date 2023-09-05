@@ -3,6 +3,8 @@ import WholesaleWave from "./WholesaleWave";
 import { useLoaderData, Form } from "react-router-dom";
 import { useState, useEffect } from "react";
 
+import { editWave, deleteSelectedWave, updateWavePrinted } from "../function/waveUpdate";
+
 export async function loader() {
   const res = await fetch("http://localhost:3000");
   const waves = await res.json();
@@ -29,24 +31,7 @@ const WholesaleWaveTable = () => {
     wavePrinted: "N",
   });
 
-  const deleteSelectedWave = async (waveToDelete) => {
-    try {
-      const res = await fetch(`http://localhost:3000/delete/${waveToDelete}`, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      const data = await res.json();
-      location.reload();
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
-  const editWave = (e) => {
-    console.log(e, "edit wave");
-  };
 
   const wholesaleWavesToList = waveData.map((wave) => (
     <WholesaleWave
@@ -64,10 +49,12 @@ const WholesaleWaveTable = () => {
       user={wave.user}
       deleteSelectedWave={deleteSelectedWave}
       editWave={editWave}
+      updateWavePrinted={updateWavePrinted}
     />
   ));
 
-  // useEffect(() => console.log(formData), [formData]);
+  // useEffect(() => console.log(waves), [waves]);
+  useEffect(() => console.log(formData), [formData]);
 
   const handleChange = (e) => {
     setFormData((prevState) => {
@@ -77,6 +64,7 @@ const WholesaleWaveTable = () => {
       };
     });
   };
+
 
   return (
     <div className="pt-32 flex justify-center items-center px-8 mx-auto">
