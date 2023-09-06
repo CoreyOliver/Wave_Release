@@ -53,5 +53,13 @@ module.exports = {
         } catch (error) {
             console.log(error)
         }
-    }
+    },
+
+    // editWavePrinted: async(req, res) => {
+    //     try {
+    //         const [rows] = connectDB.query()
+    //     } catch (error) {
+    //         console.log(error)
+    //     }
+    // }
 };

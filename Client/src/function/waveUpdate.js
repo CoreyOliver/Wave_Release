@@ -13,8 +13,22 @@ export const deleteSelectedWave = async (waveToDelete) => {
   }
 };
 
-export const updateWavePrinted = (e) => {
-    console.log(e, `not ${e}`)
+export const updateWavePrinted = async (waveToUpdate) => {
+  try {
+    const res = await fetch(
+      `http://localhost:3000/updatePrinted/${waveToUpdate}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    const data = await res.json();
+    location.reload();
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export const editWave = (e) => {

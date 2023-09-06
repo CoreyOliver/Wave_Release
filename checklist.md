@@ -29,3 +29,9 @@ TO DO:
 [] add edit function to wave line
     [] use state to add form when selected
     [] edit the whole line?
+    [] add input to the line when state is altered
+    [x] initialized the update function in wavetable
+        [x] prop down to waveLine
+[] update print function
+
+[] finish update printed put functio in controller
