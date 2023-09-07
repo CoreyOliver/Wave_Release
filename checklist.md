@@ -7,10 +7,10 @@ Task:
 [] send data to db to pull and visualize
     [x]SQL
         [1/2] table for wave data
-            [] ship date
-            [] unit count
+            [x] ship date
+            [x] unit count
             [] window
-            [] customer name
+            [x] customer name
         [] Customer data
             [] tendering requirements
             [] d/c breakdown
