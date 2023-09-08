@@ -35,3 +35,7 @@ TO DO:
 [] update print function
 
 [] finish update printed put functio in controller
+
+
+[] mass edit dates for customer
+    []  update WHERE cust and date are xxxxx

@@ -10,7 +10,7 @@ router.post('/add/WS', mainControllers.addWholesaleWave)
 
 //PUT
 router.put('/edit/:wave', mainControllers.editWave)
-router.put('/edit/:wave', mainControllers.editWavePrinted)
+router.put('/updatePrinted/:wave/:oldPrinted', mainControllers.editWavePrinted)
 
 
 //Delete

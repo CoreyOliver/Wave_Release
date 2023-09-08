@@ -13,10 +13,10 @@ export const deleteSelectedWave = async (waveToDelete) => {
   }
 };
 
-export const updateWavePrinted = async (waveToUpdate) => {
+export const updateWavePrinted = async (waveToUpdate , oldPrinted) => {
   try {
     const res = await fetch(
-      `http://localhost:3000/updatePrinted/${waveToUpdate}`,
+      `http://localhost:3000/updatePrinted/${waveToUpdate}/${oldPrinted}`,
       {
         method: "PUT",
         headers: {
@@ -24,7 +24,7 @@ export const updateWavePrinted = async (waveToUpdate) => {
         },
       }
     );
-    const data = await res.json();
+    console.log(res)
     location.reload();
   } catch (error) {
     console.log(error);

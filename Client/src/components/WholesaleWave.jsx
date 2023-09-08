@@ -65,9 +65,9 @@ const WholesaleWave = ({
         className="sm:text-xs xl:text-sm mx-2 px-4 bg-orange-300 "
       >
         {printed === "Y" ? (
-          <GrCheckboxSelected size={20} className="mx-auto cursor-pointer" onClick={() => updateWavePrinted(wave)}/>
+          <GrCheckboxSelected size={20} className="mx-auto cursor-pointer hover:scale-125" onClick={() => updateWavePrinted(wave)}/>
         ) : (
-          <GrCheckbox size={20} className="mx-auto cursor-pointer" onClick={() => updateWavePrinted(wave)}/>
+          <GrCheckbox size={20} className="mx-auto cursor-pointer hover:scale-125" onClick={() => updateWavePrinted(wave,printed)}/>
         )}
       </th>
       <th className="rounded-xl bg-emerald-400">
