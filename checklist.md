@@ -32,10 +32,11 @@ TO DO:
     [] add input to the line when state is altered
     [x] initialized the update function in wavetable
         [x] prop down to waveLine
-[] update print function
+[x] update print function
 
-[] finish update printed put functio in controller
-
+[x] finish update printed put function in controller
+    [x] update that one line
+        [x] update to !old value
 
 [] mass edit dates for customer
     []  update WHERE cust and date are xxxxx
