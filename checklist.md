@@ -23,7 +23,7 @@ Task:
 TO DO:
 
 [x] adjust the date format for the POST request. Date format?
-[] add delete request by wave params
+[x] add delete request by wave params
     [x] delete request set up
     [x] troubleshoot why it hasn't deleted
 [] add edit function to wave line
