@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 import {
   GrEdit,
   GrTrash,
@@ -22,6 +22,17 @@ const WholesaleWave = ({
   deleteSelectedWave,
   editWave,
 }) => {
+  const [waveFormToggle, setWaveFormToggle] = useState({
+    location: false,
+    user: false,
+    wave: false,
+    customer: false,
+    units: false,
+    startShip: false,
+    cancelDate: false,
+    tenderDate: false,
+    shipDate: false,
+  });
   return (
     <tr className="">
       <th scope="col" className="sm:text-xs xl:text-sm mx-2 px-4 bg-orange-300">
@@ -46,7 +57,7 @@ const WholesaleWave = ({
         {customer}
       </th>
       <th scope="col" className="sm:text-xs xl:text-sm mx-2 px-4 bg-green-300">
-        {units}
+        {waveFormToggle.units ? 'gottem' : {units}}
       </th>
       <th scope="col" className="sm:text-xs xl:text-sm mx-2 px-4 bg-red-300">
         {startShip}
@@ -65,9 +76,17 @@ const WholesaleWave = ({
         className="sm:text-xs xl:text-sm mx-2 px-4 bg-orange-300 "
       >
         {printed === "Y" ? (
-          <GrCheckboxSelected size={20} className="mx-auto cursor-pointer hover:scale-125" onClick={() => updateWavePrinted(wave)}/>
+          <GrCheckboxSelected
+            size={20}
+            className="mx-auto cursor-pointer hover:scale-125"
+            onClick={() => updateWavePrinted(wave)}
+          />
         ) : (
-          <GrCheckbox size={20} className="mx-auto cursor-pointer hover:scale-125" onClick={() => updateWavePrinted(wave,printed)}/>
+          <GrCheckbox
+            size={20}
+            className="mx-auto cursor-pointer hover:scale-125"
+            onClick={() => updateWavePrinted(wave, printed)}
+          />
         )}
       </th>
       <th className="rounded-xl bg-emerald-400">
