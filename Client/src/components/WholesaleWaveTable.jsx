@@ -3,7 +3,7 @@ import WholesaleWave from "./WholesaleWave";
 import { useLoaderData, Form } from "react-router-dom";
 import { useState, useEffect } from "react";
 
-import { editWave, deleteSelectedWave, updateWavePrinted } from "../function/waveUpdate";
+import { editWave, deleteSelectedWave, updateWavePrinted, selectItemToUpdate } from "../function/waveUpdate";
 
 export async function loader() {
   const res = await fetch("http://localhost:3000");
@@ -13,7 +13,6 @@ export async function loader() {
 
 const WholesaleWaveTable = () => {
   const waves = useLoaderData();
-  const [waveData, setWaveData] = useState(waves);
   const [formData, setFormData] = useState({
     waveDate: new Date().toLocaleDateString("en-US", {
       day: "2-digit",
@@ -30,10 +29,21 @@ const WholesaleWaveTable = () => {
     waveShipDate: "",
     wavePrinted: "N",
   });
+  const [waveFormToggle, setWaveFormToggle] = useState({
+    location: false,
+    user: false,
+    wave: false,
+    customer: false,
+    units: false,
+    startShip: false,
+    cancelDate: false,
+    tenderDate: false,
+    shipDate: false,
+  });
 
 
 
-  const wholesaleWavesToList = waveData.map((wave) => (
+  const wholesaleWavesToList = waves.map((wave) => (
     <WholesaleWave
       key={wave.waveNumber}
       location={wave.whLocation}
@@ -50,6 +60,7 @@ const WholesaleWaveTable = () => {
       deleteSelectedWave={deleteSelectedWave}
       editWave={editWave}
       updateWavePrinted={updateWavePrinted}
+      selectItemToUpdate={selectItemToUpdate}
     />
   ));
 

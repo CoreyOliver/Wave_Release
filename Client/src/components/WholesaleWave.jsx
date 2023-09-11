@@ -21,18 +21,8 @@ const WholesaleWave = ({
   user,
   deleteSelectedWave,
   editWave,
+  selectItemToUpdate,
 }) => {
-  const [waveFormToggle, setWaveFormToggle] = useState({
-    location: false,
-    user: false,
-    wave: false,
-    customer: false,
-    units: false,
-    startShip: false,
-    cancelDate: false,
-    tenderDate: false,
-    shipDate: false,
-  });
   return (
     <tr className="">
       <th scope="col" className="sm:text-xs xl:text-sm mx-2 px-4 bg-orange-300">
@@ -50,25 +40,54 @@ const WholesaleWave = ({
       >
         {user}
       </th>
-      <th scope="col" className="sm:text-xs xl:text-sm mx-2 px-4 bg-pink-300">
+      <th
+        scope="col"
+        className="sm:text-xs xl:text-sm mx-2 px-4 bg-pink-300"
+        onClick={() => selectItemToUpdate(wave)}
+      >
         {wave}
       </th>
-      <th scope="col" className="sm:text-xs xl:text-sm mx-2 px-4 bg-indigo-300">
+      <th
+        scope="col"
+        className="sm:text-xs xl:text-sm mx-2 px-4 bg-indigo-300"
+        onClick={() => selectItemToUpdate(customer)}
+      >
         {customer}
       </th>
-      <th scope="col" className="sm:text-xs xl:text-sm mx-2 px-4 bg-green-300">
-        {waveFormToggle.units ? 'gottem' : {units}}
+      <th
+        scope="col"
+        className="sm:text-xs xl:text-sm mx-2 px-4 bg-green-300"
+        onClick={() => selectItemToUpdate(units)}
+      >
+        {units}
       </th>
-      <th scope="col" className="sm:text-xs xl:text-sm mx-2 px-4 bg-red-300">
+      <th
+        scope="col"
+        className="sm:text-xs xl:text-sm mx-2 px-4 bg-red-300"
+        onClick={() => selectItemToUpdate(startShip)}
+      >
         {startShip}
       </th>
-      <th scope="col" className="sm:text-xs xl:text-sm mx-2 px-4 bg-red-300">
+      <th
+        scope="col"
+        className="sm:text-xs xl:text-sm mx-2 px-4 bg-red-300"
+        onClick={() => selectItemToUpdate(cancelDate)}
+      >
         {cancelDate}
       </th>
-      <th scope="col" className="sm:text-xs xl:text-sm mx-2 px-4 bg-purple-300">
+      <th
+        scope="col"
+        className="sm:text-xs xl:text-sm mx-2 px-4 bg-purple-300"
+        onClick={() => selectItemToUpdate(tenderDate)}
+      >
         {tenderDate}
       </th>
-      <th scope="col" className="sm:text-xs xl:text-sm mx-2 px-4 bg-purple-300">
+      <th
+        scope="col"
+        className="sm:text-xs xl:text-sm mx-2 px-4 bg-purple-300"
+        // onClick={() => selectItemToUpdate(shipDate)}
+        onClick={() => console.log(e)}
+      >
         {shipDate}
       </th>
       <th

@@ -34,3 +34,7 @@ export const updateWavePrinted = async (waveToUpdate , oldPrinted) => {
 export const editWave = (e) => {
   console.log(e, "edit wave");
 };
+
+export const selectItemToUpdate = (e) => {
+  console.log('update this particular', e)
+}
