@@ -28,6 +28,7 @@ TO DO:
     [x] troubleshoot why it hasn't deleted
 [] add edit function to wave line
     [] use state to add form when selected
+        [] add input for lines when clicked
     [] edit the whole line?
     [] add input to the line when state is altered
     [x] initialized the update function in wavetable

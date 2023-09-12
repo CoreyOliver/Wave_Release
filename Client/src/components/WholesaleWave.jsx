@@ -40,12 +40,21 @@ const WholesaleWave = ({
       >
         {user}
       </th>
-      <th
+      {/* <th
         scope="col"
         className="sm:text-xs xl:text-sm mx-2 px-4 bg-pink-300"
         onClick={() => selectItemToUpdate(wave)}
       >
         {wave}
+      </th> */}
+      <th>
+        <input
+          className="w-24 text-xs text-center"
+          type="text"
+          placeholder="Wave"
+          name="updateWave"
+          autoComplete="off"
+        ></input>
       </th>
       <th
         scope="col"
