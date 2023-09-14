@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   GrEdit,
   GrTrash,
@@ -23,6 +23,18 @@ const WholesaleWave = ({
   editWave,
   selectItemToUpdate,
 }) => {
+  const [waveLineData, setWaveLineData] = useState({
+    wave: wave,
+    customer: customer,
+    units: units,
+    startShip: startShip,
+    cancelDate: cancelDate,
+    tenderDate: tenderDate,
+    shipDate: shipDate,
+    user: user
+  })
+
+  // useEffect(()=> {console.log(waveLineData)},[])
   return (
     <tr className="">
       <th scope="col" className="sm:text-xs xl:text-sm mx-2 px-4 bg-orange-300">
@@ -49,9 +61,9 @@ const WholesaleWave = ({
       </th> */}
       <th>
         <input
-          className="w-24 text-xs text-center"
+          className="w-24 text-xs text-center text-black"
           type="text"
-          placeholder="Wave"
+          placeholder={wave}
           name="updateWave"
           autoComplete="off"
         ></input>

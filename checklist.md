@@ -29,6 +29,8 @@ TO DO:
 [] add edit function to wave line
     [] use state to add form when selected
         [] add input for lines when clicked
+        [] map out state within the wave function (line 26-35)
+        [] double click to change to an input vs the data?
     [] edit the whole line?
     [] add input to the line when state is altered
     [x] initialized the update function in wavetable
