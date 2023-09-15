@@ -31,6 +31,7 @@ TO DO:
         [] add input for lines when clicked
         [] map out state within the wave function (line 26-35)
         [] double click to change to an input vs the data?
+        []add ternary for inputs
     [] edit the whole line?
     [] add input to the line when state is altered
     [x] initialized the update function in wavetable
