@@ -34,17 +34,7 @@ const WholesaleWaveTable = () => {
     waveShipDate: "",
     wavePrinted: "N",
   });
-  // const [waveFormToggle, setWaveFormToggle] = useState({
-  //   location: false,
-  //   user: false,
-  //   wave: false,
-  //   customer: false,
-  //   units: false,
-  //   startShip: false,
-  //   cancelDate: false,
-  //   tenderDate: false,
-  //   shipDate: false,
-  // });
+
 
   const wholesaleWavesToList = waves.map((wave) => (
     <WholesaleWave
@@ -68,7 +58,6 @@ const WholesaleWaveTable = () => {
   ));
 
   // useEffect(() => console.log(waves), [waves]);
-  useEffect(() => console.log(formData), [formData]);
   useEffect(() => console.log(formData), [formData]);
 
   const handleChange = (e) => {
