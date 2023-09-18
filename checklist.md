@@ -44,3 +44,6 @@ TO DO:
 
 [] mass edit dates for customer
     []  update WHERE cust and date are xxxxx
+
+[] add confirmation for delete
+    [] prompt for are you sure

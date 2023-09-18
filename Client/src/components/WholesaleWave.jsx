@@ -4,6 +4,8 @@ import {
   GrTrash,
   GrCheckbox,
   GrCheckboxSelected,
+  GrLinkBottom,
+  GrClose
 } from "react-icons/gr";
 import { updateWavePrinted } from "../function/waveUpdate";
 
@@ -21,7 +23,6 @@ const WholesaleWave = ({
   user,
   deleteSelectedWave,
   editWave,
-  // selectItemToUpdate,
 }) => {
   const [waveLineData, setWaveLineData] = useState({
     wave: wave,
@@ -43,21 +44,24 @@ const WholesaleWave = ({
         edit: !waveLineData.edit,
       };
     });
-    console.log(waveLineData);
+    // console.log(waveLineData);
   };
 
-  useEffect(() => {
-    console.log(waveLineData.edit);
-  }, []);
+  // useEffect(() => {
+  //   console.log(waveLineData.edit);
+  // }, []);
 
   return waveLineData.edit ? (
     <tr>
       <th scope="col" className="sm:text-xs xl:text-sm mx-2 px-4 bg-orange-300">
         {date}
       </th>
-      <th>
+      <th
+        scope="col"
+        className="sm:text-xs xl:text-sm mx-2 px-2 bg-blue-300 hidden md:table-cell"
+      >
         <input
-          className="w-24 text-xs text-center text-black"
+          className="w-24 text-xs text-center text-black rounded-lg"
           type="list"
           list="locations"
           placeholder={waveLineData.location}
@@ -65,27 +69,30 @@ const WholesaleWave = ({
           autoComplete="off"
         ></input>
       </th>
-      <th>
+      <th
+        scope="col"
+        className="sm:text-xs xl:text-sm mx-2 px-4 bg-yellow-300 hidden md:table-cell"
+      >
         <input
-          className="w-24 text-xs text-center text-black"
+          className="w-24 text-xs text-center text-black rounded-lg"
           type="text"
           placeholder={waveLineData.user}
           name="updateUser"
           autoComplete="off"
         ></input>
       </th>
-      <th>
+      <th scope="col" className="sm:text-xs xl:text-sm mx-2 px-4 bg-pink-300">
         <input
-          className="w-24 text-xs text-center text-black"
+          className="w-24 text-xs text-center text-black rounded-lg"
           type="text"
           placeholder={waveLineData.wave}
           name="updateWave"
           autoComplete="off"
         ></input>
       </th>
-      <th>
+      <th scope="col" className="sm:text-xs xl:text-sm mx-2 px-4 bg-indigo-300">
         <input
-          className="w-24 text-xs text-center text-black"
+          className="w-24 text-xs text-center text-black rounded-lg"
           type="list"
           list="customers"
           placeholder={waveLineData.customer}
@@ -93,45 +100,45 @@ const WholesaleWave = ({
           autoComplete="off"
         ></input>
       </th>
-      <th>
+      <th scope="col" className="sm:text-xs xl:text-sm mx-2 px-4 bg-green-300">
         <input
-          className="w-24 text-xs text-center text-black"
+          className="w-24 text-xs text-center text-black rounded-lg"
           type="text"
           placeholder={waveLineData.units}
           name="updateUnits"
           autoComplete="off"
         ></input>
       </th>
-      <th>
+      <th scope="col" className="sm:text-xs xl:text-sm mx-2 px-4 bg-red-300">
         <input
-          className="w-24 text-xs text-center text-black"
+          className="w-24 text-xs text-center text-black rounded-lg"
           type="text"
           placeholder={waveLineData.startShip}
           name="updatestartShip"
           autoComplete="off"
         ></input>
       </th>
-      <th>
+      <th scope="col" className="sm:text-xs xl:text-sm mx-2 px-4 bg-red-300">
         <input
-          className="w-24 text-xs text-center text-black"
+          className="w-24 text-xs text-center text-black rounded-lg"
           type="text"
           placeholder={waveLineData.cancelDate}
           name="updatecancelDate"
           autoComplete="off"
         ></input>
       </th>
-      <th>
+      <th scope="col" className="sm:text-xs xl:text-sm mx-2 px-4 bg-purple-300">
         <input
-          className="w-24 text-xs text-center text-black"
+          className="w-24 text-xs text-center text-black rounded-lg"
           type="text"
           placeholder={waveLineData.tenderDate}
           name="updatetenderDate"
           autoComplete="off"
         ></input>
       </th>
-      <th>
+      <th scope="col" className="sm:text-xs xl:text-sm mx-2 px-4 bg-purple-300">
         <input
-          className="w-24 text-xs text-center text-black"
+          className="w-24 text-xs text-center text-black rounded-lg"
           type="text"
           placeholder={waveLineData.shipDate}
           name="updateshipDate"
@@ -156,16 +163,16 @@ const WholesaleWave = ({
           />
         )}
       </th>
-      <th className="rounded-xl bg-emerald-400">
-        <GrEdit
+      <th className="rounded-lg bg-red-600">
+        <GrClose
           size={20}
           className="rounded-sm  mx-2"
           onClick={() => selectItemToUpdate()}
           cursor="pointer"
         />
       </th>
-      <th className="rounded-xl bg-emerald-400">
-        <GrTrash
+      <th className="rounded-lg bg-red-600">
+        <GrLinkBottom
           size={20}
           className="rounded-sm mx-2"
           onClick={() => deleteSelectedWave(wave)}
@@ -229,7 +236,7 @@ const WholesaleWave = ({
           />
         )}
       </th>
-      <th className="rounded-xl bg-emerald-400">
+      <th className="rounded-lg bg-emerald-600">
         <GrEdit
           size={20}
           className="rounded-sm  mx-2"
@@ -237,7 +244,7 @@ const WholesaleWave = ({
           cursor="pointer"
         />
       </th>
-      <th className="rounded-xl bg-emerald-400">
+      <th className="rounded-lg bg-emerald-600">
         <GrTrash
           size={20}
           className="rounded-sm mx-2"
