@@ -5,7 +5,7 @@ import {
   GrCheckbox,
   GrCheckboxSelected,
   GrLinkBottom,
-  GrClose
+  GrClose,
 } from "react-icons/gr";
 import { updateWavePrinted } from "../function/waveUpdate";
 
@@ -44,11 +44,19 @@ const WholesaleWave = ({
         edit: !waveLineData.edit,
       };
     });
-    // console.log(waveLineData);
+  };
+
+  const handleLineChange = (e) => {
+    setWaveLineData((prevState) => {
+      return {
+        ...prevState,
+        [e.target.name.split("update")[1]]: e.target.value,
+      };
+    });
   };
 
   // useEffect(() => {
-  //   console.log(waveLineData.edit);
+  //   console.log(waveLineData);
   // }, []);
 
   return waveLineData.edit ? (
@@ -64,7 +72,8 @@ const WholesaleWave = ({
           className="w-24 text-xs text-center text-black rounded-lg"
           type="list"
           list="locations"
-          placeholder={waveLineData.location}
+          value={waveLineData.location}
+          onChange={(e) => handleLineChange(e)}
           name="updateLocation"
           autoComplete="off"
         ></input>
@@ -76,7 +85,8 @@ const WholesaleWave = ({
         <input
           className="w-24 text-xs text-center text-black rounded-lg"
           type="text"
-          placeholder={waveLineData.user}
+          value={waveLineData.user}
+          onChange={(e) => handleLineChange(e)}
           name="updateUser"
           autoComplete="off"
         ></input>
@@ -85,7 +95,8 @@ const WholesaleWave = ({
         <input
           className="w-24 text-xs text-center text-black rounded-lg"
           type="text"
-          placeholder={waveLineData.wave}
+          value={waveLineData.wave}
+          onChange={(e) => handleLineChange(e)}
           name="updateWave"
           autoComplete="off"
         ></input>
@@ -95,7 +106,8 @@ const WholesaleWave = ({
           className="w-24 text-xs text-center text-black rounded-lg"
           type="list"
           list="customers"
-          placeholder={waveLineData.customer}
+          value={waveLineData.customer}
+          onChange={(e) => handleLineChange(e)}
           name="updateCustomer"
           autoComplete="off"
         ></input>
@@ -104,7 +116,8 @@ const WholesaleWave = ({
         <input
           className="w-24 text-xs text-center text-black rounded-lg"
           type="text"
-          placeholder={waveLineData.units}
+          value={waveLineData.units}
+          onChange={(e) => handleLineChange(e)}
           name="updateUnits"
           autoComplete="off"
         ></input>
@@ -113,7 +126,8 @@ const WholesaleWave = ({
         <input
           className="w-24 text-xs text-center text-black rounded-lg"
           type="text"
-          placeholder={waveLineData.startShip}
+          value={waveLineData.startShip}
+          onChange={(e) => handleLineChange(e)}
           name="updatestartShip"
           autoComplete="off"
         ></input>
@@ -122,7 +136,8 @@ const WholesaleWave = ({
         <input
           className="w-24 text-xs text-center text-black rounded-lg"
           type="text"
-          placeholder={waveLineData.cancelDate}
+          value={waveLineData.cancelDate}
+          onChange={(e) => handleLineChange(e)}
           name="updatecancelDate"
           autoComplete="off"
         ></input>
@@ -131,7 +146,8 @@ const WholesaleWave = ({
         <input
           className="w-24 text-xs text-center text-black rounded-lg"
           type="text"
-          placeholder={waveLineData.tenderDate}
+          value={waveLineData.tenderDate}
+          onChange={(e) => handleLineChange(e)}
           name="updatetenderDate"
           autoComplete="off"
         ></input>
@@ -140,7 +156,8 @@ const WholesaleWave = ({
         <input
           className="w-24 text-xs text-center text-black rounded-lg"
           type="text"
-          placeholder={waveLineData.shipDate}
+          value={waveLineData.shipDate}
+          onChange={(e) => handleLineChange(e)}
           name="updateshipDate"
           autoComplete="off"
         ></input>
@@ -175,7 +192,19 @@ const WholesaleWave = ({
         <GrLinkBottom
           size={20}
           className="rounded-sm mx-2"
-          onClick={() => deleteSelectedWave(wave)}
+          onClick={() =>
+            editWave(
+              location,
+              wave,
+              customer,
+              units,
+              startShip,
+              cancelDate,
+              tenderDate,
+              shipDate,
+              user
+            )
+          }
           cursor="pointer"
         />
       </th>

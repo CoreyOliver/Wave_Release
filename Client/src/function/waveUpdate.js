@@ -13,7 +13,7 @@ export const deleteSelectedWave = async (waveToDelete) => {
   }
 };
 
-export const updateWavePrinted = async (waveToUpdate , oldPrinted) => {
+export const updateWavePrinted = async (waveToUpdate, oldPrinted) => {
   try {
     const res = await fetch(
       `http://localhost:3000/updatePrinted/${waveToUpdate}/${oldPrinted}`,
@@ -24,15 +24,34 @@ export const updateWavePrinted = async (waveToUpdate , oldPrinted) => {
         },
       }
     );
-    console.log(res)
+    console.log(res);
     location.reload();
   } catch (error) {
     console.log(error);
   }
 };
 
-export const editWave = (e) => {
-  console.log(e, "edit wave");
+export const editWave = (
+  location,
+  wave,
+  customer,
+  units,
+  startShip,
+  cancelDate,
+  tenderDate,
+  shipDate,
+  user
+) => {
+  const waveUpdate = {
+    location: location,
+    user: user,
+    wave: wave,
+    customer: customer,
+    units: units,
+    startShip: startShip,
+    cancelDate: cancelDate,
+    tenderDate: tenderDate,
+    shipDate: shipDate,
+  };
+  console.log(waveUpdate);
 };
-
-
