@@ -31,7 +31,7 @@ export const updateWavePrinted = async (waveToUpdate, oldPrinted) => {
   }
 };
 
-export const editWave = (
+export const  editWave = async (
   location,
   wave,
   customer,
@@ -54,4 +54,20 @@ export const editWave = (
     shipDate: shipDate,
   };
   console.log(waveUpdate);
+  try {
+    const res = await fetch(
+      'http://localhost:3000/editWave',
+      {
+        method: "PUT",
+        body: JSON.stringify(waveUpdate),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    )
+    alert(res)
+    
+  } catch (error) {
+    console.log(error)
+  }
 };

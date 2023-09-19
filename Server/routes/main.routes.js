@@ -11,6 +11,7 @@ router.post('/add/WS', mainControllers.addWholesaleWave)
 //PUT
 router.put('/edit/:wave', mainControllers.editWave)
 router.put('/updatePrinted/:wave/:oldPrinted', mainControllers.editWavePrinted)
+router.put('/editWave', mainControllers.editWave)
 
 
 //Delete

@@ -48,4 +48,7 @@ TO DO:
 [] add confirmation for delete
     [] prompt for are you sure
 
-[] continue the request - created object for request.
+[x] continue the request - created object for request.
+    [x] created object
+        [x] object received
+        [] set up for edit wave function in main.controller
