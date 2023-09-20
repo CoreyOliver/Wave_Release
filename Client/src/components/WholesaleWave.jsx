@@ -74,7 +74,7 @@ const WholesaleWave = ({
           list="locations"
           value={waveLineData.location}
           onChange={(e) => handleLineChange(e)}
-          name="updateLocation"
+          name="updatelocation"
           autoComplete="off"
         ></input>
       </th>
@@ -87,7 +87,7 @@ const WholesaleWave = ({
           type="text"
           value={waveLineData.user}
           onChange={(e) => handleLineChange(e)}
-          name="updateUser"
+          name="updateuser"
           autoComplete="off"
         ></input>
       </th>
@@ -97,7 +97,7 @@ const WholesaleWave = ({
           type="text"
           value={waveLineData.wave}
           onChange={(e) => handleLineChange(e)}
-          name="updateWave"
+          name="updatewave"
           autoComplete="off"
         ></input>
       </th>
@@ -108,7 +108,7 @@ const WholesaleWave = ({
           list="customers"
           value={waveLineData.customer}
           onChange={(e) => handleLineChange(e)}
-          name="updateCustomer"
+          name="updatecustomer"
           autoComplete="off"
         ></input>
       </th>
@@ -118,7 +118,7 @@ const WholesaleWave = ({
           type="text"
           value={waveLineData.units}
           onChange={(e) => handleLineChange(e)}
-          name="updateUnits"
+          name="updateunits"
           autoComplete="off"
         ></input>
       </th>
@@ -194,15 +194,15 @@ const WholesaleWave = ({
           className="rounded-sm mx-2"
           onClick={() =>
             editWave(
-              location,
-              wave,
-              customer,
-              units,
-              startShip,
-              cancelDate,
-              tenderDate,
-              shipDate,
-              user
+              waveLineData.location,
+              waveLineData.wave,
+              waveLineData.customer,
+              waveLineData.units,
+              waveLineData.startShip,
+              waveLineData.cancelDate,
+              waveLineData.tenderDate,
+              waveLineData.shipDate,
+              waveLineData.user
             )
           }
           cursor="pointer"

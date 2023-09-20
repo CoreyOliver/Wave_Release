@@ -49,6 +49,8 @@ module.exports = {
   editWave: async (req, res) => {
     try {
       console.log(req.body);
+      //object is good to go
+        //take the object and query sql to take care of it
     } catch (error) {
       console.log(error);
     }
