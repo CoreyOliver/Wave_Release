@@ -55,9 +55,9 @@ const WholesaleWave = ({
     });
   };
 
-  // useEffect(() => {
-  //   console.log(waveLineData);
-  // }, []);
+  useEffect(() => {
+    console.log(waveLineData);
+  }, []);
 
   return waveLineData.edit ? (
     <tr>
