@@ -51,9 +51,11 @@ module.exports = {
       console.log(req.body);
       const [rows] = await connectDB.query(
         //add the query
+        //we want to select the correct wave from the request
+        //update the line with all of the data from the request on each column
+
       )
-      //object is good to go
-        //take the object and query sql to take care of it
+
     } catch (error) {
       console.log(error);
     }
