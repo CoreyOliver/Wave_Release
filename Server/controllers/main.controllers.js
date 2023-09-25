@@ -49,13 +49,14 @@ module.exports = {
   editWave: async (req, res) => {
     try {
       console.log(req.body);
-      const [rows] = await connectDB.query(
+      const [rows] = await connectDB
+        .query
         //add the query
         //we want to select the correct wave from the request
         //update the line with all of the data from the request on each column
-
-      )
-
+        ();
+      //object is good to go
+      //take the object and query sql to take care of it
     } catch (error) {
       console.log(error);
     }
@@ -73,12 +74,14 @@ module.exports = {
   },
 
   editWavePrinted: async (req, res) => {
-      const waveToUpdate = req.params.wave
-      const newPrinted = req.params.oldPrinted === 'N' ? 'Y' : 'N'
-      console.log(waveToUpdate, newPrinted)
+    const waveToUpdate = req.params.wave;
+    const newPrinted = req.params.oldPrinted === "N" ? "Y" : "N";
+    console.log(waveToUpdate, newPrinted);
     try {
-      const [rows] = await connectDB.query(`UPDATE wholesaleData SET printed = '${newPrinted}' WHERE (waveNumber = '${waveToUpdate}');`);
-      res.json(rows)
+      const [rows] = await connectDB.query(
+        `UPDATE wholesaleData SET printed = '${newPrinted}' WHERE (waveNumber = '${waveToUpdate}');`
+      );
+      res.json(rows);
     } catch (error) {
       console.log(error);
     }
