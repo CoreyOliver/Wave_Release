@@ -31,7 +31,7 @@ export const updateWavePrinted = async (waveToUpdate, oldPrinted) => {
   }
 };
 
-export const  editWave = async (
+export const editWave = async (
   location,
   wave,
   customer,
@@ -55,19 +55,18 @@ export const  editWave = async (
   };
   console.log(waveUpdate);
   try {
-    const res = await fetch(
-      'http://localhost:3000/editWave',
-      {
-        method: "PUT",
-        body: JSON.stringify(waveUpdate),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    )
-    alert(res)
-    
+    const res = await fetch("http://localhost:3000/editWave", {
+      method: "PUT",
+      body: JSON.stringify(waveUpdate),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await res.json()
+    console.log(data)
+    /// why isn't the lcoation reload working
+    location.reload();
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
 };
