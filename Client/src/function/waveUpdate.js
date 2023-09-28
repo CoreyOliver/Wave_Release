@@ -1,3 +1,4 @@
+
 export const deleteSelectedWave = async (waveToDelete) => {
   try {
     const res = await fetch(`http://localhost:3000/delete/${waveToDelete}`, {
@@ -6,7 +7,6 @@ export const deleteSelectedWave = async (waveToDelete) => {
         "Content-Type": "application/json",
       },
     });
-    const data = await res.json();
     location.reload();
   } catch (error) {
     console.log(error);
@@ -24,8 +24,16 @@ export const updateWavePrinted = async (waveToUpdate, oldPrinted) => {
         },
       }
     );
-    console.log(res);
     location.reload();
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getSingleWaveData = async (wave) => {
+  try {
+    const res = await fetch(`http://localhost:3000/getOneWave/${wave}`);
+    return res
   } catch (error) {
     console.log(error);
   }
@@ -53,7 +61,6 @@ export const editWave = async (
     tenderDate: tenderDate,
     shipDate: shipDate,
   };
-  console.log(waveUpdate);
   try {
     const res = await fetch("http://localhost:3000/editWave", {
       method: "PUT",
@@ -62,10 +69,8 @@ export const editWave = async (
         "Content-Type": "application/json",
       },
     });
-    const data = await res.json()
-    console.log(data)
-    /// why isn't the lcoation reload working
-    location.reload();
+    // const newData = await getSingleWaveData(waveUpdate.wave)
+    window.location.reload();
   } catch (error) {
     console.log(error);
   }

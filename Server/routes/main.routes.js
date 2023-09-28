@@ -4,6 +4,7 @@ const mainControllers = require("../controllers/main.controllers");
 
 //getters
 router.get('/', mainControllers.getRoot)
+router.get('/getOneWave/:wave', mainControllers.getOneWave)
 
 //POST
 router.post('/add/WS', mainControllers.addWholesaleWave)
