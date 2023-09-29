@@ -53,6 +53,13 @@ TO DO:
         [x] object received
         [x] set up for edit wave function in main.controller
 
+[] copy lines
+    [] add button to line with data
+        [] on click move the data to the open form 
+
 clean up later:
 
-[]add some checks to make sure you don't break the fetch missing data
+[x]add some checks to make sure you don't break the fetch missing data
+
+[] adjust the request to exclude shipping dates for after
+    [] wave the goods and add shipping date once the whole order is complete instead of when we are waving it
