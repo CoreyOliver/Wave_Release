@@ -6,8 +6,9 @@ import {
   GrCheckboxSelected,
   GrLinkBottom,
   GrClose,
+  GrClipboard,
 } from "react-icons/gr";
-import { updateWavePrinted } from "../function/waveUpdate";
+import { updateWavePrinted, copyWaveLine } from "../function/waveUpdate";
 
 const WholesaleWave = ({
   location,
@@ -270,6 +271,14 @@ const WholesaleWave = ({
           size={20}
           className="rounded-sm  mx-2"
           onClick={() => selectItemToUpdate()}
+          cursor="pointer"
+        />
+      </th>
+      <th className="rounded-lg bg-emerald-600">
+        <GrClipboard
+          size={20}
+          className="rounded-sm mx-2"
+          onClick={() => copyWaveLine(wave)}
           cursor="pointer"
         />
       </th>

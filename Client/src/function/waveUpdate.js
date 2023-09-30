@@ -75,3 +75,7 @@ export const editWave = async (
     console.log(error);
   }
 };
+
+export const copyWaveLine = (wave) => {
+  console.log(wave)
+}
