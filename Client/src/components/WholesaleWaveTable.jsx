@@ -8,6 +8,7 @@ import {
   deleteSelectedWave,
   updateWavePrinted,
   // selectItemToUpdate,
+  copyWaveLine,
 } from "../function/waveUpdate";
 
 export async function loader() {
@@ -35,7 +36,33 @@ const WholesaleWaveTable = () => {
     wavePrinted: "N",
   });
 
-
+  const copyWaveLine = (
+    location,
+    wave,
+    customer,
+    units,
+    startShip,
+    cancelDate,
+    tenderDate,
+    shipDate,
+    user
+  ) => {
+    setFormData((prevState) => {
+      return {
+        ...prevState,
+        waveLocation: location,
+        waveUser: user,
+        waveNumber: "",
+        waveCustomer: customer,
+        waveCount: units,
+        waveStartShip: startShip,
+        waveCancelDate: cancelDate,
+        waveTenderDate: tenderDate,
+        waveShipDate: shipDate,
+      };
+    });
+    console.log(formData)
+  };
   const wholesaleWavesToList = waves.map((wave) => (
     <WholesaleWave
       key={wave.waveNumber}
@@ -53,6 +80,7 @@ const WholesaleWaveTable = () => {
       deleteSelectedWave={deleteSelectedWave}
       editWave={editWave}
       updateWavePrinted={updateWavePrinted}
+      copyWaveLine={copyWaveLine}
       // selectItemToUpdate={selectItemToUpdate}
     />
   ));

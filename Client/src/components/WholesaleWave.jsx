@@ -8,7 +8,7 @@ import {
   GrClose,
   GrClipboard,
 } from "react-icons/gr";
-import { updateWavePrinted, copyWaveLine } from "../function/waveUpdate";
+import { updateWavePrinted } from "../function/waveUpdate";
 
 const WholesaleWave = ({
   location,
@@ -24,6 +24,7 @@ const WholesaleWave = ({
   user,
   deleteSelectedWave,
   editWave,
+  copyWaveLine
 }) => {
   const [waveLineData, setWaveLineData] = useState({
     wave: wave,
@@ -196,6 +197,7 @@ const WholesaleWave = ({
           onClick={() =>
             editWave(
               waveLineData.location,
+              waveLineData.user,
               waveLineData.wave,
               waveLineData.customer,
               waveLineData.units,
@@ -203,7 +205,6 @@ const WholesaleWave = ({
               waveLineData.cancelDate,
               waveLineData.tenderDate,
               waveLineData.shipDate,
-              waveLineData.user
             )
           }
           cursor="pointer"
@@ -278,7 +279,17 @@ const WholesaleWave = ({
         <GrClipboard
           size={20}
           className="rounded-sm mx-2"
-          onClick={() => copyWaveLine(wave)}
+          onClick={() => copyWaveLine(
+            waveLineData.location,
+            waveLineData.user,
+            waveLineData.wave,
+            waveLineData.customer,
+            waveLineData.units,
+            waveLineData.startShip,
+            waveLineData.cancelDate,
+            waveLineData.tenderDate,
+            waveLineData.shipDate,
+          )}
           cursor="pointer"
         />
       </th>

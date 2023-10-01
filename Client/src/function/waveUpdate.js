@@ -76,6 +76,30 @@ export const editWave = async (
   }
 };
 
-export const copyWaveLine = (wave) => {
-  console.log(wave)
-}
+export const copyWaveLine = (
+  location,
+  wave,
+  customer,
+  units,
+  startShip,
+  cancelDate,
+  tenderDate,
+  shipDate,
+  user
+) => {
+  setFormData((prevState) =>  {
+    return {
+      ...prevState,
+      waveLocation: location,
+      waveNumber: wave,
+      waveCustomer: customer,
+      waveCount: units,
+      waveStartShip: startShip,
+      waveCancelDate: cancelDate,
+      waveTenderDate: tenderDate,
+      waveShipDate: shipDate,
+      waveUser: user,
+    }
+  });
+  
+};
