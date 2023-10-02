@@ -53,9 +53,9 @@ TO DO:
         [x] object received
         [x] set up for edit wave function in main.controller
 
-[] copy lines
-    [] add button to line with data
-        [] on click move the data to the open form 
+[x] copy lines
+    [x] add button to line with data
+        [x] on click move the data to the open form 
 
 clean up later:
 

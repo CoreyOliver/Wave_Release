@@ -17,7 +17,7 @@ export async function loader() {
   return waves;
 }
 
-const WholesaleWaveTable = () => {
+const WebWaveTable = () => {
   const waves = useLoaderData();
   const [formData, setFormData] = useState({
     waveDate: new Date().toLocaleDateString("en-US", {
@@ -61,27 +61,27 @@ const WholesaleWaveTable = () => {
       };
     });
   };
-  const wholesaleWavesToList = waves.map((wave) => (
-    <WholesaleWave
-      key={wave.waveNumber}
-      location={wave.whLocation}
-      date={wave.waveDate}
-      wave={wave.waveNumber}
-      customer={wave.customer}
-      units={wave.unitCount}
-      startShip={wave.startShip}
-      cancelDate={wave.cancelDate}
-      tenderDate={wave.tenderDate}
-      shipDate={wave.shipDate}
-      printed={wave.printed}
-      user={wave.user}
-      deleteSelectedWave={deleteSelectedWave}
-      editWave={editWave}
-      updateWavePrinted={updateWavePrinted}
-      copyWaveLine={copyWaveLine}
-      // selectItemToUpdate={selectItemToUpdate}
-    />
-  ));
+  // const wholesaleWavesToList = waves.map((wave) => (
+  //   <WholesaleWave
+  //     key={wave.waveNumber}
+  //     location={wave.whLocation}
+  //     date={wave.waveDate}
+  //     wave={wave.waveNumber}
+  //     customer={wave.customer}
+  //     units={wave.unitCount}
+  //     startShip={wave.startShip}
+  //     cancelDate={wave.cancelDate}
+  //     tenderDate={wave.tenderDate}
+  //     shipDate={wave.shipDate}
+  //     printed={wave.printed}
+  //     user={wave.user}
+  //     deleteSelectedWave={deleteSelectedWave}
+  //     editWave={editWave}
+  //     updateWavePrinted={updateWavePrinted}
+  //     copyWaveLine={copyWaveLine}
+  //     // selectItemToUpdate={selectItemToUpdate}
+  //   />
+  // ));
 
   // useEffect(() => console.log(waves), [waves]);
   useEffect(() => console.log(formData), [formData]);
@@ -164,7 +164,7 @@ const WholesaleWaveTable = () => {
             </tr>
           </thead>
           <tbody>
-            {wholesaleWavesToList}
+            {/* {wholesaleWavesToList} */}
             <tr className="">
               <th
                 scope="col"
@@ -354,4 +354,4 @@ const WholesaleWaveTable = () => {
   );
 };
 
-export default WholesaleWaveTable;
+export default WebWaveTable;

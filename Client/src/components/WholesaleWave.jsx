@@ -280,15 +280,14 @@ const WholesaleWave = ({
           size={20}
           className="rounded-sm mx-2"
           onClick={() => copyWaveLine(
-            waveLineData.location,
-            waveLineData.user,
-            waveLineData.wave,
-            waveLineData.customer,
-            waveLineData.units,
-            waveLineData.startShip,
-            waveLineData.cancelDate,
-            waveLineData.tenderDate,
-            waveLineData.shipDate,
+            location,
+            customer,
+            units,
+            user,
+            startShip,
+            cancelDate,
+            tenderDate,
+            shipDate,
           )}
           cursor="pointer"
         />
