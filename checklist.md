@@ -63,3 +63,5 @@ clean up later:
 
 [] adjust the request to exclude shipping dates for after
     [] wave the goods and add shipping date once the whole order is complete instead of when we are waving it
+[]prompt when attempting to update an order 
+    [] mass update needs permissions?
