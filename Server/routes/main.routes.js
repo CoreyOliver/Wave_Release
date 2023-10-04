@@ -3,7 +3,8 @@ const router = express.Router();
 const mainControllers = require("../controllers/main.controllers");
 
 //getters
-router.get('/', mainControllers.getRoot)
+router.get('/ws', mainControllers.getWSRoot)
+router.get('/web', mainControllers.getWebRoot)
 router.get('/getOneWave/:wave', mainControllers.getOneWave)
 
 //POST

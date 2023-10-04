@@ -22,6 +22,40 @@ Task:
 
 TO DO:
 
+
+[] mass edit dates for customer
+    []  update WHERE cust and date are xxxxx
+
+[] add confirmation for delete
+    [] prompt for are you sure
+
+
+WIP:
+
+[] figure out why web wave is rendering extra cells from the wholesale wave component
+
+
+clean up later:
+
+
+[] adjust the request to exclude shipping dates for after
+    [] wave the goods and add shipping date once the whole order is complete instead of when we are waving it
+[]prompt when attempting to update an order 
+    [] mass update needs permissions?
+
+completed:
+
+[x] continue the request - created object for request.
+    [x] created object
+        [x] object received
+        [x] set up for edit wave function in main.controller
+
+[x] copy lines
+    [x] add button to line with data
+        [x] on click move the data to the open form 
+
+[x]add some checks to make sure you don't break the fetch missing data
+
 [x] adjust the date format for the POST request. Date format?
 [x] add delete request by wave params
     [x] delete request set up
@@ -41,27 +75,3 @@ TO DO:
 [x] finish update printed put function in controller
     [x] update that one line
         [x] update to !old value
-
-[] mass edit dates for customer
-    []  update WHERE cust and date are xxxxx
-
-[] add confirmation for delete
-    [] prompt for are you sure
-
-[x] continue the request - created object for request.
-    [x] created object
-        [x] object received
-        [x] set up for edit wave function in main.controller
-
-[x] copy lines
-    [x] add button to line with data
-        [x] on click move the data to the open form 
-
-clean up later:
-
-[x]add some checks to make sure you don't break the fetch missing data
-
-[] adjust the request to exclude shipping dates for after
-    [] wave the goods and add shipping date once the whole order is complete instead of when we are waving it
-[]prompt when attempting to update an order 
-    [] mass update needs permissions?

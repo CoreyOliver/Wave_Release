@@ -8,11 +8,10 @@ import {
   deleteSelectedWave,
   updateWavePrinted,
   // selectItemToUpdate,
-  copyWaveLine,
 } from "../function/waveUpdate";
 
 export async function loader() {
-  const res = await fetch("http://localhost:3000");
+  const res = await fetch("http://localhost:3000/ws");
   const waves = await res.json();
   return waves;
 }

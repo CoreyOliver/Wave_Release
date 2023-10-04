@@ -1,12 +1,23 @@
 const connectDB = require("../config/main.database");
 
 module.exports = {
-  getRoot: async (req, res) => {
+  getWSRoot: async (req, res) => {
     try {
       const [rows] = await connectDB.query(
         "select whLocation, waveNumber,customer,unitCount,date_format(startShip, '%m/%d') as startShip,      date_format(cancelDate, '%m/%d') as cancelDate,date_format(tenderDate, '%m/%d') as tenderDate,    date_format(shipDate, '%m/%d') as shipDate, printed, date_format(waveDate, '%m/%d') as waveDate, user FROM `wholesaleData`"
       );
-      console.log('got root');
+      console.log("got root");
+      res.json(rows);
+    } catch (error) {
+      console.log(error);
+    }
+  },
+  getWebRoot: async (req, res) => {
+    try {
+      const [rows] = await connectDB.query(
+        "select whLocation, waveNumber, units, printed, date_format(date, '%m/%d') as waveDate, user, comments FROM `webdata`"
+      );
+      console.log("got web root");
       res.json(rows);
     } catch (error) {
       console.log(error);
@@ -16,11 +27,11 @@ module.exports = {
     try {
       const [rows] = await connectDB.query(
         `select whLocation, waveNumber,customer,unitCount,date_format(startShip, '%m/%d') as startShip,      date_format(cancelDate, '%m/%d') as cancelDate,date_format(tenderDate, '%m/%d') as tenderDate,    date_format(shipDate, '%m/%d') as shipDate, printed, date_format(waveDate, '%m/%d') as waveDate, user FROM wave_release.wholesaledata WHERE(waveNumber = ${req.params.wave})`
-      )
-      console.log(rows)
-      res.json(rows)
+      );
+      console.log(rows);
+      res.json(rows);
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   },
   addWholesaleWave: async (req, res) => {
@@ -85,7 +96,7 @@ module.exports = {
       );
       //update the line with all of the data from the request on each column
       //object is good to go
-      res.json(rows)
+      res.json(rows);
       //take the object and query sql to take care of it
     } catch (error) {
       console.log(error);

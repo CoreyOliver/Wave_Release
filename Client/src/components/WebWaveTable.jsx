@@ -1,24 +1,23 @@
-import WholesaleWave from "./WholesaleWave";
+import WebWave from "./WholesaleWave";
 
 import { useLoaderData, Form } from "react-router-dom";
 import { useState, useEffect } from "react";
 
-import {
-  editWave,
-  deleteSelectedWave,
-  updateWavePrinted,
-  // selectItemToUpdate,
-  copyWaveLine,
-} from "../function/waveUpdate";
+// import // editWave, wholesale
+// deleteSelectedWave, wholesale
+// updateWavePrinted, wholesale
+// // selectItemToUpdate, wholesale
+// copyWaveLine,
+// "../function/waveUpdate";
 
 export async function loader() {
-  const res = await fetch("http://localhost:3000");
-  const waves = await res.json();
-  return waves;
+  const res = await fetch("http://localhost:3000/web");
+  const webWaves = await res.json();
+  return webWaves;
 }
 
 const WebWaveTable = () => {
-  const waves = useLoaderData();
+  const webWaves = useLoaderData();
   const [formData, setFormData] = useState({
     waveDate: new Date().toLocaleDateString("en-US", {
       day: "2-digit",
@@ -44,47 +43,37 @@ const WebWaveTable = () => {
     startShip,
     cancelDate,
     tenderDate,
-    shipDate,
+    shipDate
   ) => {
     setFormData((prevState) => {
       return {
         ...prevState,
         waveLocation: location,
-        waveCustomer: customer,
         waveCount: "",
         waveUser: user,
-        waveStartShip: startShip,
-        waveCancelDate: cancelDate,
-        waveTenderDate: tenderDate,
-        waveShipDate: shipDate,
         waveNumber: "",
       };
     });
   };
-  // const wholesaleWavesToList = waves.map((wave) => (
-  //   <WholesaleWave
-  //     key={wave.waveNumber}
-  //     location={wave.whLocation}
-  //     date={wave.waveDate}
-  //     wave={wave.waveNumber}
-  //     customer={wave.customer}
-  //     units={wave.unitCount}
-  //     startShip={wave.startShip}
-  //     cancelDate={wave.cancelDate}
-  //     tenderDate={wave.tenderDate}
-  //     shipDate={wave.shipDate}
-  //     printed={wave.printed}
-  //     user={wave.user}
-  //     deleteSelectedWave={deleteSelectedWave}
-  //     editWave={editWave}
-  //     updateWavePrinted={updateWavePrinted}
-  //     copyWaveLine={copyWaveLine}
-  //     // selectItemToUpdate={selectItemToUpdate}
-  //   />
-  // ));
+  const webWavesToList = webWaves.map((wave) => (
+    <WebWave
+      key={wave.waveNumber}
+      location={wave.whLocation}
+      date={wave.waveDate}
+      wave={wave.waveNumber}
+      units={wave.units}
+      printed={wave.printed}
+      user={wave.user}
+      // deleteSelectedWave={deleteSelectedWave}
+      // editWave={editWave}
+      // updateWavePrinted={updateWavePrinted}
+      // copyWaveLine={copyWaveLine}
+      // selectItemToUpdate={selectItemToUpdate}
+    />
+  ));
 
   // useEffect(() => console.log(waves), [waves]);
-  useEffect(() => console.log(formData), [formData]);
+  useEffect(() => console.log(webWaves), [formData]);
 
   const handleChange = (e) => {
     setFormData((prevState) => {
@@ -127,33 +116,9 @@ const WebWaveTable = () => {
               </th>
               <th
                 scope="col"
-                className="mx-2 px-4 bg-indigo-400 border-slate-600"
-              >
-                Account
-              </th>
-              <th
-                scope="col"
                 className="mx-2 px-4 bg-green-400 border-slate-600"
               >
                 Units
-              </th>
-              <th scope="col" className="mx-2 px-4 bg-red-400 border-slate-600">
-                Start Ship
-              </th>
-              <th scope="col" className="mx-2 px-4 bg-red-400 border-slate-600">
-                Cancel Date
-              </th>
-              <th
-                scope="col"
-                className="mx-2 px-4 bg-purple-400 border-slate-600"
-              >
-                Tender Date
-              </th>
-              <th
-                scope="col"
-                className="mx-2 px-4 bg-purple-400 border-slate-600"
-              >
-                Ship Date
               </th>
               <th
                 scope="col"
@@ -164,7 +129,7 @@ const WebWaveTable = () => {
             </tr>
           </thead>
           <tbody>
-            {/* {wholesaleWavesToList} */}
+            {webWavesToList}
             <tr className="">
               <th
                 scope="col"
@@ -225,21 +190,6 @@ const WebWaveTable = () => {
               </th>
               <th
                 scope="col"
-                className="sm:text-xs xl:text-sm mx-2 px-4 bg-indigo-300"
-              >
-                <input
-                  className="w-24 text-xs text-center"
-                  type="list"
-                  list="customers"
-                  placeholder="Customer"
-                  name="waveCustomer"
-                  value={formData.waveCustomer}
-                  onChange={(e) => handleChange(e)}
-                  autoComplete="off"
-                />
-              </th>
-              <th
-                scope="col"
                 className="sm:text-xs xl:text-sm mx-2 px-4 bg-green-300"
               >
                 <input
@@ -252,62 +202,7 @@ const WebWaveTable = () => {
                   autoComplete="off"
                 />
               </th>
-              <th
-                scope="col"
-                className="sm:text-xs xl:text-sm mx-2 px-4 bg-red-300"
-              >
-                <input
-                  className="w-24 text-xs text-center"
-                  type="text"
-                  placeholder="Start Ship"
-                  name="waveStartShip"
-                  value={formData.waveStartShip}
-                  onChange={(e) => handleChange(e)}
-                  autoComplete="off"
-                />
-              </th>
-              <th
-                scope="col"
-                className="sm:text-xs xl:text-sm mx-2 px-4 bg-red-300"
-              >
-                <input
-                  className="w-24 text-xs text-center"
-                  type="text"
-                  placeholder="Cancel Date"
-                  name="waveCancelDate"
-                  value={formData.waveCancelDate}
-                  onChange={(e) => handleChange(e)}
-                  autoComplete="off"
-                />
-              </th>
-              <th
-                scope="col"
-                className="sm:text-xs xl:text-sm mx-2 px-4 bg-purple-300"
-              >
-                <input
-                  className="w-24 text-xs text-center"
-                  type="text"
-                  placeholder="Tender Date"
-                  name="waveTenderDate"
-                  value={formData.waveTenderDate}
-                  onChange={(e) => handleChange(e)}
-                  autoComplete="off"
-                />
-              </th>
-              <th
-                scope="col"
-                className="sm:text-xs xl:text-sm mx-2 px-4 bg-purple-300"
-              >
-                <input
-                  className="w-24 text-xs text-center"
-                  type="text"
-                  placeholder="Ship Date"
-                  name="waveShipDate"
-                  value={formData.waveShipDate}
-                  onChange={(e) => handleChange(e)}
-                  autoComplete="off"
-                />
-              </th>
+
               <th
                 scope="col"
                 className="sm:text-xs xl:text-sm mx-2 px-4 bg-orange-300"
