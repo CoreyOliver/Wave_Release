@@ -4,7 +4,7 @@ module.exports = {
   getWSRoot: async (req, res) => {
     try {
       const [rows] = await connectDB.query(
-        "select whLocation, waveNumber,customer,unitCount,date_format(startShip, '%m/%d') as startShip,      date_format(cancelDate, '%m/%d') as cancelDate,date_format(tenderDate, '%m/%d') as tenderDate,    date_format(shipDate, '%m/%d') as shipDate, printed, date_format(waveDate, '%m/%d') as waveDate, user FROM `wholesaleData`"
+        "select whLocation, waveNumber,customer,unitCount,date_format(startShip, '%m/%d') as startShip,      date_format(cancelDate, '%m/%d') as cancelDate,date_format(tenderDate, '%m/%d') as tenderDate,    date_format(shipDate, '%m/%d') as shipDate, printed, date_format(waveDate, '%m/%d') as waveDate, Upper(user) as user FROM `wholesaleData`"
       );
       console.log("got root");
       res.json(rows);
@@ -15,7 +15,7 @@ module.exports = {
   getWebRoot: async (req, res) => {
     try {
       const [rows] = await connectDB.query(
-        "select whLocation, waveNumber, units, printed, date_format(date, '%m/%d') as waveDate, user, comments FROM `webdata`"
+        "select whLocation, waveNumber, units, printed, date_format(date, '%m/%d') as waveDate, Upper(user) as user, comments FROM `webdata`"
       );
       console.log("got web root");
       res.json(rows);
@@ -66,6 +66,25 @@ module.exports = {
       res.json(rows);
     } catch (error) {
       console.log(error);
+    }
+  },
+  addWebWave: async (req, res) => {
+    const updateDate = (date) => {
+      const currentYear = new Date().getFullYear();
+      let month = date.split("/")[0];
+      let day = date.split("/")[1];
+      if (month.length < 2) {
+        month = `0${month}`;
+      }
+      if (day.length < 2) {
+        day = `0${day}`;
+      }
+      return `${currentYear}-${month}-${day}`;
+    };
+    try {
+      console.log(req.body)
+    } catch (error) {
+      console.log(error)
     }
   },
   editWave: async (req, res) => {

@@ -1,4 +1,4 @@
-import WebWave from "./WholesaleWave";
+import WebWave from "./WebWave";
 
 import { useLoaderData, Form } from "react-router-dom";
 import { useState, useEffect } from "react";
@@ -44,7 +44,7 @@ const WebWaveTable = () => {
   ));
 
   // useEffect(() => console.log(waves), [waves]);
-  useEffect(() => console.log(webWaves), [formData]);
+  // useEffect(() => console.log(webWaves), [formData]);
 
   const handleChange = (e) => {
     setFormData((prevState) => {

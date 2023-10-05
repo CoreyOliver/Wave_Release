@@ -9,6 +9,7 @@ router.get('/getOneWave/:wave', mainControllers.getOneWave)
 
 //POST
 router.post('/add/WS', mainControllers.addWholesaleWave)
+router.post('/add/web', mainControllers.addWebWave)
 
 //PUT
 router.put('/edit/:wave', mainControllers.editWave)

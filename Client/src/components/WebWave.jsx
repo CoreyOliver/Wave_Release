@@ -6,7 +6,6 @@ import {
   GrClipboard,
 } from "react-icons/gr";
 import { updateWavePrinted } from "../function/waveUpdate";
-import { useMatch } from "react-router-dom";
 
 const WebWave = ({
   location,
@@ -21,7 +20,6 @@ const WebWave = ({
 }) => {
   const [waveLineData, setWaveLineData] = useState({
     wave: wave,
-    customer: customer,
     units: units,
     user: user,
     edit: false,
@@ -37,11 +35,6 @@ const WebWave = ({
     });
   };
 
-  useEffect(() => {
-      console.log(waveLineData);
-    const match = useMatch("/webs").
-    console.log(match)
-  }, []);
 
   return (
     <tr>

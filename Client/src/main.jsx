@@ -19,7 +19,8 @@ import "./index.css";
 import { loader as getWholesaleWaves } from "./components/WholesaleWaveTable.jsx";
 import { action as addWholesaleWave } from "./function/addWholesaleWave.action.js";
 import { loader as getWebWaves } from "./components/WebWaveTable.jsx";
-
+import {action as addWebWave } from "./function/addWebWave.action.js"
+ 
 //router
 
 const router = createBrowserRouter([
@@ -38,6 +39,7 @@ const router = createBrowserRouter([
         path: "/webs",
         loader: getWebWaves,
         element: <WebWaveTable />,
+        action: addWebWave
       },
     ],
   },
