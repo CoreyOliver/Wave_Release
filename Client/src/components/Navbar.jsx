@@ -7,7 +7,7 @@ const Navbar = () => {
       <div className="flex justify-evenly items-center w-full h-full ">
         <div>
           <ul className="hidden md:flex">
-            <NavLink to="/">
+            <NavLink to="/ws">
               <li className="ml-10 text-sm uppercase hover:border-b hover:bg-slate-500 hover:rounded-xl">
                 Wholesale Enter
               </li>

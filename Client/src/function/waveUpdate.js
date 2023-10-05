@@ -41,6 +41,7 @@ export const getSingleWaveData = async (wave) => {
 
 export const editWave = async (
   location,
+  user,
   wave,
   customer,
   units,
@@ -48,7 +49,6 @@ export const editWave = async (
   cancelDate,
   tenderDate,
   shipDate,
-  user
 ) => {
   const waveUpdate = {
     location: location,

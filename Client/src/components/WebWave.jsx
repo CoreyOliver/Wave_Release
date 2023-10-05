@@ -1,14 +1,12 @@
 import { useEffect, useState } from "react";
 import {
-  GrEdit,
   GrTrash,
   GrCheckbox,
   GrCheckboxSelected,
-  GrLinkBottom,
-  GrClose,
   GrClipboard,
 } from "react-icons/gr";
 import { updateWavePrinted } from "../function/waveUpdate";
+import { useMatch } from "react-router-dom";
 
 const WebWave = ({
   location,
@@ -30,15 +28,6 @@ const WebWave = ({
     location: location,
   });
 
-  const selectItemToUpdate = () => {
-    setWaveLineData((prevState) => {
-      return {
-        ...prevState,
-        edit: !waveLineData.edit,
-      };
-    });
-  };
-
   const handleLineChange = (e) => {
     setWaveLineData((prevState) => {
       return {
@@ -48,119 +37,21 @@ const WebWave = ({
     });
   };
 
-  // useEffect(() => {
-  //   console.log(waveLineData);
-  // }, []);
+  useEffect(() => {
+      console.log(waveLineData);
+    const match = useMatch("/webs").
+    console.log(match)
+  }, []);
 
-  return waveLineData.edit ? (
+  return (
     <tr>
       <th scope="col" className="sm:text-xs xl:text-sm mx-2 px-4 bg-orange-300">
         {date}
       </th>
-      <th
-        scope="col"
-        className="sm:text-xs xl:text-sm mx-2 px-2 bg-blue-300 hidden md:table-cell"
-      >
-        <input
-          className="w-24 text-xs text-center text-black rounded-lg"
-          type="list"
-          list="locations"
-          value={waveLineData.location}
-          onChange={(e) => handleLineChange(e)}
-          name="updatelocation"
-          autoComplete="off"
-        ></input>
-      </th>
-      <th
-        scope="col"
-        className="sm:text-xs xl:text-sm mx-2 px-4 bg-yellow-300 hidden md:table-cell"
-      >
-        <input
-          className="w-24 text-xs text-center text-black rounded-lg"
-          type="text"
-          value={waveLineData.user}
-          onChange={(e) => handleLineChange(e)}
-          name="updateuser"
-          autoComplete="off"
-        ></input>
-      </th>
-      <th scope="col" className="sm:text-xs xl:text-sm mx-2 px-4 bg-pink-300">
-        <input
-          className="w-24 text-xs text-center text-black rounded-lg"
-          type="text"
-          value={waveLineData.wave}
-          onChange={(e) => handleLineChange(e)}
-          name="updatewave"
-          autoComplete="off"
-        ></input>
-      </th>
-      <th scope="col" className="sm:text-xs xl:text-sm mx-2 px-4 bg-green-300">
-        <input
-          className="w-24 text-xs text-center text-black rounded-lg"
-          type="text"
-          value={waveLineData.units}
-          onChange={(e) => handleLineChange(e)}
-          name="updateunits"
-          autoComplete="off"
-        ></input>
-      </th>
-      <th
-        scope="col"
-        className="sm:text-xs xl:text-sm mx-2 px-4 bg-orange-300 "
-      >
-        {printed === "Y" ? (
-          <GrCheckboxSelected
-            size={20}
-            className="mx-auto cursor-pointer hover:scale-125"
-            onClick={() => updateWavePrinted(wave)}
-          />
-        ) : (
-          <GrCheckbox
-            size={20}
-            className="mx-auto cursor-pointer hover:scale-125"
-            onClick={() => updateWavePrinted(wave, printed)}
-          />
-        )}
-      </th>
-      <th className="rounded-lg bg-red-600">
-        <GrClose
-          size={20}
-          className="rounded-sm  mx-2"
-          onClick={() => selectItemToUpdate()}
-          cursor="pointer"
-        />
-      </th>
-      <th className="rounded-lg bg-red-600">
-        <GrLinkBottom
-          size={20}
-          className="rounded-sm mx-2"
-          onClick={() =>
-            editWave(
-              waveLineData.location,
-              waveLineData.user,
-              waveLineData.wave,
-              waveLineData.units
-            )
-          }
-          cursor="pointer"
-        />
-      </th>
-    </tr>
-  ) : (
-    <tr>
-      <th scope="col" className="sm:text-xs xl:text-sm mx-2 px-4 bg-orange-300">
-        {date}
-      </th>
-      <th
-        scope="col"
-        className="sm:text-xs xl:text-sm mx-2 px-2 bg-blue-300 hidden md:table-cell"
-      >
+      <th scope="col" className="sm:text-xs xl:text-sm mx-2 px-2 bg-blue-300">
         {location}
       </th>
-      <th
-        scope="col"
-        className="sm:text-xs xl:text-sm mx-2 px-4 bg-yellow-300 hidden md:table-cell"
-      >
+      <th scope="col" className="sm:text-xs xl:text-sm mx-2 px-4 bg-yellow-300">
         {user}
       </th>
       <th scope="col" className="sm:text-xs xl:text-sm mx-2 px-4 bg-pink-300">
@@ -187,28 +78,6 @@ const WebWave = ({
             onClick={() => updateWavePrinted(wave, printed)}
           />
         )}
-      </th>
-      <th className="rounded-lg bg-emerald-600">
-        <GrEdit
-          size={20}
-          className="rounded-sm  mx-2"
-          onClick={() => selectItemToUpdate()}
-          cursor="pointer"
-        />
-      </th>
-      <th className="rounded-lg bg-emerald-600">
-        <GrClipboard
-          size={20}
-          className="rounded-sm mx-2"
-          onClick={() =>
-            copyWaveLine(
-              location,
-              units,
-              user,
-            )
-          }
-          cursor="pointer"
-        />
       </th>
       <th className="rounded-lg bg-emerald-600">
         <GrTrash

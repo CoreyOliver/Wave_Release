@@ -82,6 +82,7 @@ module.exports = {
       }
       return `${currentYear}-${month}-${day}`;
     };
+    console.log(req.body)
     const startShipToEdit = updateDate(req.body.startShip);
     const cancelDateToEdit = updateDate(req.body.cancelDate);
     const shipDateToEdit = updateDate(req.body.shipDate);
