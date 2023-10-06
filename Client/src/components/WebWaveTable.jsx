@@ -28,6 +28,7 @@ const WebWaveTable = () => {
     waveNumber: "",
     waveCount: "",
     wavePrinted: "N",
+    waveComment: ""
   });
   const webWavesToList = webWaves.map((wave) => (
     <WebWave
@@ -38,6 +39,7 @@ const WebWaveTable = () => {
       units={wave.units}
       printed={wave.printed}
       user={wave.user}
+      comment={wave.comments}
       // deleteSelectedWave={deleteSelectedWave}
       // updateWavePrinted={updateWavePrinted}
     />
@@ -97,6 +99,12 @@ const WebWaveTable = () => {
                   className="mx-2 px-4 bg-orange-400 border-slate-600"
                 >
                   Printed
+                </th>
+                <th
+                  scope="col"
+                  className="mx-2 px-4 bg-purple-400 border-slate-600"
+                >
+                  Comments
                 </th>
               </tr>
             </thead>
@@ -185,6 +193,20 @@ const WebWaveTable = () => {
                     placeholder="Printed"
                     name="wavePrinted"
                     value={formData.wavePrinted}
+                    onChange={(e) => handleChange(e)}
+                    autoComplete="off"
+                  />
+                </th>
+                <th
+                  scope="col"
+                  className="sm:text-xs xl:text-sm mx-2 px-4 bg-purple-300"
+                >
+                  <input
+                    className="w-24 text-xs text-center"
+                    type="text"
+                    placeholder="Comment"
+                    name="waveComment"
+                    value={formData.waveComment}
                     onChange={(e) => handleChange(e)}
                     autoComplete="off"
                   />

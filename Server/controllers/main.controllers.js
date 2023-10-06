@@ -15,7 +15,7 @@ module.exports = {
   getWebRoot: async (req, res) => {
     try {
       const [rows] = await connectDB.query(
-        "select whLocation, waveNumber, units, printed, date_format(date, '%m/%d') as waveDate, Upper(user) as user, comments FROM `webdata`"
+        "select whLocation, waveNumber, units, printed, date_format(date, '%m/%d') as waveDate, Upper(user) as user, comments FROM `webdata` ORDER BY waveNumber asc"
       );
       console.log("got web root");
       res.json(rows);
@@ -81,8 +81,13 @@ module.exports = {
       }
       return `${currentYear}-${month}-${day}`;
     };
+    const waveDateToAdd = updateDate(req.body.waveDate)
     try {
       console.log(req.body);
+      const [rows] = await connectDB.query(
+        `INSERT INTO wave_release.webdata (whLocation, date, user, waveNumber, units, comments, printed) VALUES ('${req.body.waveLocation}', '${waveDateToAdd}','${req.body.waveUser.toUpperCase()}','${req.body.waveNumber}','${req.body.waveCount}','${req.body.waveComment}','${req.body.wavePrinted}');`
+      );
+      res.json(rows)
     } catch (error) {
       console.log(error);
     }

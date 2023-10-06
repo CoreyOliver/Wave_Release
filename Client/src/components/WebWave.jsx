@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
+import { GrTrash, GrCheckbox, GrCheckboxSelected } from "react-icons/gr";
 import {
-  GrTrash,
-  GrCheckbox,
-  GrCheckboxSelected,
-} from "react-icons/gr";
-import { updateWebWavePrinted, deleteSelectedWebWave } from "../function/webWaveUpdate";
+  updateWebWavePrinted,
+  deleteSelectedWebWave,
+} from "../function/webWaveUpdate";
 
 const WebWave = ({
   location,
@@ -13,6 +12,7 @@ const WebWave = ({
   units,
   printed,
   user,
+  comment,
   // deleteSelectedWave,
   // editWave,
   // copyWaveLine
@@ -33,7 +33,6 @@ const WebWave = ({
   //     };
   //   });
   // };
-
 
   return (
     <tr>
@@ -70,6 +69,9 @@ const WebWave = ({
             onClick={() => updateWebWavePrinted(wave, printed)}
           />
         )}
+      </th>
+      <th scope="col" className="sm:text-xs xl:text-sm mx-2 px-4 bg-purple-300">
+        {comment}
       </th>
       <th className="rounded-lg bg-emerald-600">
         <GrTrash
