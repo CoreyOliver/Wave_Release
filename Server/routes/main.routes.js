@@ -14,10 +14,12 @@ router.post('/add/web', mainControllers.addWebWave)
 //PUT
 router.put('/edit/:wave', mainControllers.editWave)
 router.put('/updatePrinted/:wave/:oldPrinted', mainControllers.editWavePrinted)
+router.put('/updateWebPrinted/:wave/:oldPrinted', mainControllers.editWebWavePrinted)
 router.put('/editWave', mainControllers.editWave)
 
 
 //Delete
 router.delete('/delete/:wave', mainControllers.deleteWave)
+router.delete('/deleteWebWave/:wave', mainControllers.deleteWebWave)
 
 module.exports = router;

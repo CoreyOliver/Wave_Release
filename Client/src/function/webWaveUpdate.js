@@ -1,7 +1,7 @@
 
-export const deleteSelectedWave = async (waveToDelete) => {
+export const deleteSelectedWebWave = async (waveToDelete) => {
   try {
-    const res = await fetch(`http://localhost:3000/delete/${waveToDelete}`, {
+    const res = await fetch(`http://localhost:3000/deleteWebWave/${waveToDelete}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -13,10 +13,10 @@ export const deleteSelectedWave = async (waveToDelete) => {
   }
 };
 
-export const updateWavePrinted = async (waveToUpdate, oldPrinted) => {
+export const updateWebWavePrinted = async (waveToUpdate, oldPrinted) => {
   try {
     const res = await fetch(
-      `http://localhost:3000/updatePrinted/${waveToUpdate}/${oldPrinted}`,
+      `http://localhost:3000/updateWebPrinted/${waveToUpdate}/${oldPrinted}`,
       {
         method: "PUT",
         headers: {
@@ -30,11 +30,3 @@ export const updateWavePrinted = async (waveToUpdate, oldPrinted) => {
   }
 };
 
-export const getSingleWaveData = async (wave) => {
-  try {
-    const res = await fetch(`http://localhost:3000/getOneWave/${wave}`);
-    return res
-  } catch (error) {
-    console.log(error);
-  }
-};

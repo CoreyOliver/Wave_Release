@@ -82,9 +82,9 @@ module.exports = {
       return `${currentYear}-${month}-${day}`;
     };
     try {
-      console.log(req.body)
+      console.log(req.body);
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   },
   editWave: async (req, res) => {
@@ -101,7 +101,7 @@ module.exports = {
       }
       return `${currentYear}-${month}-${day}`;
     };
-    console.log(req.body)
+    console.log(req.body);
     const startShipToEdit = updateDate(req.body.startShip);
     const cancelDateToEdit = updateDate(req.body.cancelDate);
     const shipDateToEdit = updateDate(req.body.shipDate);
@@ -133,6 +133,17 @@ module.exports = {
       console.log(error);
     }
   },
+  deleteWebWave: async (req, res) => {
+    console.log(req.params.wave);
+    try {
+      const [rows] = await connectDB.query(
+        `DELETE FROM webdata WHERE (waveNumber = '${req.params.wave}');`
+      );
+      res.json(rows);
+    } catch (error) {
+      console.log(error);
+    }
+  },
 
   editWavePrinted: async (req, res) => {
     const waveToUpdate = req.params.wave;
@@ -141,6 +152,19 @@ module.exports = {
     try {
       const [rows] = await connectDB.query(
         `UPDATE wholesaleData SET printed = '${newPrinted}' WHERE (waveNumber = '${waveToUpdate}');`
+      );
+      res.json(rows);
+    } catch (error) {
+      console.log(error);
+    }
+  },
+  editWebWavePrinted: async (req, res) => {
+    const waveToUpdate = req.params.wave;
+    const newPrinted = req.params.oldPrinted === "N" ? "Y" : "N";
+    try {
+      console.log(waveToUpdate, newPrinted);
+      const [rows] = await connectDB.query(
+        `UPDATE webdata SET printed = '${newPrinted}' WHERE (waveNumber = '${waveToUpdate}');`
       );
       res.json(rows);
     } catch (error) {

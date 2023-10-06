@@ -83,7 +83,7 @@ const WholesaleWaveTable = () => {
   ));
 
   // useEffect(() => console.log(waves), [waves]);
-  useEffect(() => console.log(formData), [formData]);
+  // useEffect(() => console.log(formData), [formData]);
 
   const handleChange = (e) => {
     setFormData((prevState) => {

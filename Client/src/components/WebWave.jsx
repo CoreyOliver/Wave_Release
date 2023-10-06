@@ -3,9 +3,8 @@ import {
   GrTrash,
   GrCheckbox,
   GrCheckboxSelected,
-  GrClipboard,
 } from "react-icons/gr";
-import { updateWavePrinted } from "../function/waveUpdate";
+import { updateWebWavePrinted, deleteSelectedWebWave } from "../function/webWaveUpdate";
 
 const WebWave = ({
   location,
@@ -18,22 +17,22 @@ const WebWave = ({
   // editWave,
   // copyWaveLine
 }) => {
-  const [waveLineData, setWaveLineData] = useState({
-    wave: wave,
-    units: units,
-    user: user,
-    edit: false,
-    location: location,
-  });
+  // const [waveLineData, setWaveLineData] = useState({
+  //   wave: wave,
+  //   units: units,
+  //   user: user,
+  //   edit: false,
+  //   location: location,
+  // });
 
-  const handleLineChange = (e) => {
-    setWaveLineData((prevState) => {
-      return {
-        ...prevState,
-        [e.target.name.split("update")[1]]: e.target.value,
-      };
-    });
-  };
+  // const handleLineChange = (e) => {
+  //   setWaveLineData((prevState) => {
+  //     return {
+  //       ...prevState,
+  //       [e.target.name.split("update")[1]]: e.target.value,
+  //     };
+  //   });
+  // };
 
 
   return (
@@ -62,13 +61,13 @@ const WebWave = ({
           <GrCheckboxSelected
             size={20}
             className="mx-auto cursor-pointer hover:scale-125"
-            onClick={() => updateWavePrinted(wave)}
+            onClick={() => updateWebWavePrinted(wave, printed)}
           />
         ) : (
           <GrCheckbox
             size={20}
             className="mx-auto cursor-pointer hover:scale-125"
-            onClick={() => updateWavePrinted(wave, printed)}
+            onClick={() => updateWebWavePrinted(wave, printed)}
           />
         )}
       </th>
@@ -76,7 +75,7 @@ const WebWave = ({
         <GrTrash
           size={20}
           className="rounded-sm mx-2"
-          onClick={() => deleteSelectedWave(wave)}
+          onClick={() => deleteSelectedWebWave(wave)}
           cursor="pointer"
         />
       </th>
