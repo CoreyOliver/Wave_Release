@@ -32,7 +32,6 @@ TO DO:
 
 WIP:
 
-[] update wave add function past the console command
 
 
 
@@ -79,3 +78,5 @@ completed:
 
 [x] figure out why web wave is rendering extra cells from the wholesale wave component
 
+
+[x] update wave add function past the console command
