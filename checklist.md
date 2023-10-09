@@ -33,6 +33,11 @@ TO DO:
 WIP:
 
 [] set up calendar
+    [] create events using the loader function for each date
+    []create more than one calendar for tendering and for shipping
+        []allow a toggle to call out when the 'tender' is complete
+    []webs?
+        []shows number of units waved for historic data
 
 
 clean up later:

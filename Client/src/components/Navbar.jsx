@@ -20,9 +20,11 @@ const Navbar = () => {
             <li className="ml-10 text-sm uppercase hover:border-b hover:bg-slate-500 hover:rounded-xl">
               Batch
             </li>
-            <li className="ml-10 text-sm uppercase hover:border-b hover:bg-slate-500 hover:rounded-xl">
-              Calendar
-            </li>
+            <NavLink to="/calendar">
+              <li className="ml-10 text-sm uppercase hover:border-b hover:bg-slate-500 hover:rounded-xl">
+                Calendar
+              </li>
+            </NavLink>
           </ul>
           <div className="flex md:hidden">
             <h1 className="mr-32 ml-16">Supply List</h1>

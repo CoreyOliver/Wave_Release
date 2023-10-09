@@ -6,9 +6,9 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 //components & pages
 import App from "./App.jsx";
 import ErrorPage from "./components/ErrorPage.jsx";
-// import WaveTable from './components/WaveTable.jsx';
 import WholesaleWaveTable from "./components/WholesaleWaveTable.jsx";
 import WebWaveTable from "./components/WebWaveTable.jsx";
+import CalendarContainer from "./components/CalendarContainer.jsx";
 
 //styling
 import "./index.css";
@@ -41,6 +41,10 @@ const router = createBrowserRouter([
         element: <WebWaveTable />,
         action: addWebWave
       },
+      {
+        path: "/calendar",
+        element: <CalendarContainer />
+      }
     ],
   },
 ]);
