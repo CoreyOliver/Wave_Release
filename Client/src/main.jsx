@@ -20,6 +20,7 @@ import { loader as getWholesaleWaves } from "./components/WholesaleWaveTable.jsx
 import { action as addWholesaleWave } from "./function/addWholesaleWave.action.js";
 import { loader as getWebWaves } from "./components/WebWaveTable.jsx";
 import {action as addWebWave } from "./function/addWebWave.action.js"
+import {loader as getCalendarData} from "./components/CalendarContainer.jsx"
  
 //router
 
@@ -43,7 +44,8 @@ const router = createBrowserRouter([
       },
       {
         path: "/calendar",
-        element: <CalendarContainer />
+        loader: getCalendarData,
+        element: <CalendarContainer />,
       }
     ],
   },

@@ -1,29 +1,37 @@
-import "react-big-calendar/lib/css/react-big-calendar.css";
-import { Calendar, momentLocalizer } from "react-big-calendar";
-import moment from "moment";
 
-const localizer = momentLocalizer(moment);
+import { useLoaderData } from "react-router-dom";
+import { useEffect, useState } from "react";
+import FullCalendar from "@fullcalendar/react";
+import dayGridPlugin from "@fullcalendar/daygrid";
+import interactionsPlugin from "@fullcalendar/interaction";
+import {handleDateClick} from '../function/calendarFunction'
 
-const startDate = '10/10/23'
-const endDate = '10/14/23'
-const myEventsList = [
-  {
-    start: moment(startDate).toDate(),
-    end: moment(endDate).toDate(),
-    title: "Some title",
-  },
-];
+export async function loader() {
+  const res = await fetch("http://localhost:3000/calendarGet")
+  const eventData = await res.json()
+  return eventData
+}
 
 const CalendarContainer = () => {
+  const eventData = useLoaderData()
+  const [calendarEvents, setCalendarEvents] = useState(eventData);
+
   return (
-    <div className="flex">
-      <Calendar
-        localizer={localizer}
-        events={myEventsList}
-        startAccessor="start"
-        endAccessor="end"
-        className="mx-auto mt-32 shadow-xl shadow-slate-600 rounded-sm"
-        style={{ height: 900, width: 900 }}
+    <div className="mt-32 mx-8">
+      <FullCalendar
+        height={1000}
+        selectable={true}
+        defaultAllDay={true}
+        weekends={true}
+        headerToolbar={{
+          start: "today prev next",
+          center: "title",
+          end: "dayGridMonth dayGridWeek dayGridDay",
+        }}
+        events={calendarEvents}
+        plugins={[dayGridPlugin, interactionsPlugin]}
+        initialView="dayGridMonth"
+        dateClick={(date)=>handleDateClick(date)}
       />
     </div>
   );

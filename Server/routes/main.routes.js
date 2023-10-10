@@ -6,6 +6,7 @@ const mainControllers = require("../controllers/main.controllers");
 router.get('/ws', mainControllers.getWSRoot)
 router.get('/web', mainControllers.getWebRoot)
 router.get('/getOneWave/:wave', mainControllers.getOneWave)
+router.get('/calendarGet', mainControllers.getCalendarData)
 
 //POST
 router.post('/add/WS', mainControllers.addWholesaleWave)

@@ -34,6 +34,29 @@ module.exports = {
       console.log(error);
     }
   },
+  getCalendarData: async(req,res) => {
+    try {
+      const [rows] = "select customer, SUM(unitCount) as 'dateTotal', shipDate FROM wholesaledata Group BY customer, shipDate order by shipDate asc;"
+      console.log(rows)
+        //get this data right here
+      const events = [
+        { title: '1 Dillards 10/31', date: '2023-10-11'},
+        { title: '2 Dillards 10/31', date: '2023-10-27'},
+        { title: '3 Dillards 10/31', date: '2023-10-22'},
+        { title: '4 Dillards 10/31', date: '2023-10-27'},
+        { title: '5 Dillards 10/31', date: '2023-10-27'},
+        { title: '6 Dillards 10/31', date: '2023-10-26'},
+        { title: '7 Dillards 10/31', date: '2023-10-30'},
+        { title: '8 Dillards 10/31', date: '2023-10-27'},
+        { title: '9 Dillards 10/31', date: '2023-10-25'},
+        { title: '20 Dillards [123456]', date: '2023-10-31'}
+      ]
+      res.json(events)
+      console.log('got calendar root')
+    } catch (error) {
+      console.log(error)
+    }
+  },
   addWholesaleWave: async (req, res) => {
     const updateDate = (date) => {
       const currentYear = new Date().getFullYear();
