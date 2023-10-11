@@ -8,9 +8,7 @@ export async function action({ request }) {
     waves.waveCustomer !== "" &&
     waves.waveLocation !== "" &&
     waves.waveNumber !== "" &&
-    waves.waveShipDate !== "" &&
     waves.waveStartShip !== "" &&
-    waves.waveTenderDate !== "" &&
     waves.waveUser !== ""
   ) {
     try {

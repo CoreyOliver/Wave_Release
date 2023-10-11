@@ -14,7 +14,9 @@ export async function loader() {
 
 const CalendarContainer = () => {
   const eventData = useLoaderData()
-  const [calendarEvents, setCalendarEvents] = useState(eventData);
+  const [wsCalendarEvents, setWsCalendarEvents] = useState(eventData);
+
+  useEffect(()=> console.log(wsCalendarEvents),[wsCalendarEvents])
 
   return (
     <div className="mt-32 mx-8">
@@ -28,7 +30,7 @@ const CalendarContainer = () => {
           center: "title",
           end: "dayGridMonth dayGridWeek dayGridDay",
         }}
-        events={calendarEvents}
+        events={wsCalendarEvents}
         plugins={[dayGridPlugin, interactionsPlugin]}
         initialView="dayGridMonth"
         dateClick={(date)=>handleDateClick(date)}

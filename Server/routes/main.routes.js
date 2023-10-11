@@ -7,6 +7,7 @@ router.get('/ws', mainControllers.getWSRoot)
 router.get('/web', mainControllers.getWebRoot)
 router.get('/getOneWave/:wave', mainControllers.getOneWave)
 router.get('/calendarGet', mainControllers.getCalendarData)
+router.get('/unsWaves', mainControllers.getUnscheduledWaves)
 
 //POST
 router.post('/add/WS', mainControllers.addWholesaleWave)

@@ -1,67 +1,25 @@
-import WholesaleWave from "./WholesaleWave";
+//components to bring in
+import UnscheduledWholesaleWave from "./UnscheduledWholesaleWave"
 
+//init
 import { useLoaderData, Form } from "react-router-dom";
 import { useState, useEffect } from "react";
 
-import {
-  editWave,
-  deleteSelectedWave,
-  updateWavePrinted,
-  // selectItemToUpdate,
-} from "../function/waveUpdate";
-
 export async function loader() {
-  const res = await fetch("http://localhost:3000/ws");
-  const waves = await res.json();
-  return waves;
+  const res = await fetch("http://localhost:3000/unsWaves");
+  const unscheduledWavesData = await res.json();
+  return unscheduledWavesData;
 }
+const UnscheduleWaveList = () => {
+  const unscheduledWaves = useLoaderData();
+  const [wavesToSchedule, setWavesToSchedule] = useState(unscheduledWaves);
 
-const WholesaleWaveTable = () => {
-  const waves = useLoaderData();
-  const [formData, setFormData] = useState({
-    waveDate: new Date().toLocaleDateString("en-US", {
-      day: "2-digit",
-      month: "2-digit",
-    }),
-    waveLocation: "",
-    waveUser: "",
-    waveNumber: "",
-    waveCustomer: "",
-    waveCount: "",
-    waveStartShip: "",
-    waveCancelDate: "",
-    // waveTenderDate: "",
-    // waveShipDate: "",
-    wavePrinted: "N",
-  });
+  useEffect(() => {
+    console.log(wavesToSchedule);
+  }, []);
 
-  const copyWaveLine = (
-    location,
-    customer,
-    units,
-    user,
-    startShip,
-    cancelDate,
-    // tenderDate,
-    // shipDate,
-  ) => {
-    setFormData((prevState) => {
-      return {
-        ...prevState,
-        waveLocation: location,
-        waveCustomer: customer,
-        waveCount: "",
-        waveUser: user,
-        waveStartShip: startShip,
-        waveCancelDate: cancelDate,
-        // waveTenderDate: tenderDate,
-        // waveShipDate: shipDate,
-        waveNumber: "",
-      };
-    });
-  };
-  const wholesaleWavesToList = waves.map((wave) => (
-    <WholesaleWave
+  const unscheduledWavesToList = wavesToSchedule.map((wave) => (
+    <UnscheduledWholesaleWave
       key={wave.waveNumber}
       location={wave.whLocation}
       date={wave.waveDate}
@@ -70,29 +28,12 @@ const WholesaleWaveTable = () => {
       units={wave.unitCount}
       startShip={wave.startShip}
       cancelDate={wave.cancelDate}
-      // tenderDate={wave.tenderDate}
-      // shipDate={wave.shipDate}
+      tenderDate={wave.tenderDate}
+      shipDate={wave.shipDate}
       printed={wave.printed}
       user={wave.user}
-      deleteSelectedWave={deleteSelectedWave}
-      editWave={editWave}
-      updateWavePrinted={updateWavePrinted}
-      copyWaveLine={copyWaveLine}
-      // selectItemToUpdate={selectItemToUpdate}
     />
   ));
-
-  // useEffect(() => console.log(waves), [waves]);
-  // useEffect(() => console.log(formData), [formData]);
-
-  const handleChange = (e) => {
-    setFormData((prevState) => {
-      return {
-        ...prevState,
-        [e.target.name]: e.target.value,
-      };
-    });
-  };
 
   return (
     <div className="pt-32 flex justify-center items-center px-8 mx-auto">
@@ -111,12 +52,6 @@ const WholesaleWaveTable = () => {
                 className="mx-2 px-2 bg-blue-400 border-slate-600 hidden md:table-cell"
               >
                 WH
-              </th>
-              <th
-                scope="col"
-                className="mx-2 px-4 bg-yellow-400 border-slate-600 hidden md:table-cell"
-              >
-                Waver
               </th>
               <th
                 scope="col"
@@ -142,7 +77,7 @@ const WholesaleWaveTable = () => {
               <th scope="col" className="mx-2 px-4 bg-red-400 border-slate-600">
                 Cancel Date
               </th>
-              {/* <th
+              <th
                 scope="col"
                 className="mx-2 px-4 bg-purple-400 border-slate-600"
               >
@@ -153,18 +88,12 @@ const WholesaleWaveTable = () => {
                 className="mx-2 px-4 bg-purple-400 border-slate-600"
               >
                 Ship Date
-              </th> */}
-              <th
-                scope="col"
-                className="mx-2 px-4 bg-orange-400 border-slate-600"
-              >
-                Printed
               </th>
             </tr>
           </thead>
           <tbody>
-            {wholesaleWavesToList}
-            <tr className="">
+            {unscheduledWavesToList}
+            {/* <tr className="">
               <th
                 scope="col"
                 className="sm:text-xs xl:text-sm mx-2 px-4 bg-orange-300"
@@ -174,7 +103,7 @@ const WholesaleWaveTable = () => {
                   type="text"
                   placeholder="Date"
                   name="waveDate"
-                  value={formData.waveDate}
+                  value="placeholder"
                   onChange={(e) => handleChange(e)}
                   autoComplete="off"
                 />
@@ -189,25 +118,12 @@ const WholesaleWaveTable = () => {
                   list="locations"
                   placeholder="WH"
                   name="waveLocation"
-                  value={formData.waveLocation}
+                  value="placeholder"
                   onChange={(e) => handleChange(e)}
                   autoComplete="off"
                 />
               </th>
-              <th
-                scope="col"
-                className="sm:text-xs xl:text-sm mx-2 px-4 bg-yellow-300 hidden md:table-cell"
-              >
-                <input
-                  className="w-24 text-xs text-center"
-                  type="text"
-                  placeholder="Waver"
-                  name="waveUser"
-                  value={formData.waveUser}
-                  onChange={(e) => handleChange(e)}
-                  autoComplete="off"
-                />
-              </th>
+
               <th
                 scope="col"
                 className="sm:text-xs xl:text-sm mx-2 px-4 bg-pink-300"
@@ -217,7 +133,7 @@ const WholesaleWaveTable = () => {
                   type="text"
                   placeholder="Wave Number"
                   name="waveNumber"
-                  value={formData.waveNumber}
+                  value="placeholder"
                   onChange={(e) => handleChange(e)}
                   autoComplete="off"
                 />
@@ -232,7 +148,7 @@ const WholesaleWaveTable = () => {
                   list="customers"
                   placeholder="Customer"
                   name="waveCustomer"
-                  value={formData.waveCustomer}
+                  value="placeholder"
                   onChange={(e) => handleChange(e)}
                   autoComplete="off"
                 />
@@ -246,7 +162,7 @@ const WholesaleWaveTable = () => {
                   type="text"
                   placeholder="Unit Count"
                   name="waveCount"
-                  value={formData.waveCount}
+                  value="placeholder"
                   onChange={(e) => handleChange(e)}
                   autoComplete="off"
                 />
@@ -260,7 +176,7 @@ const WholesaleWaveTable = () => {
                   type="text"
                   placeholder="Start Ship"
                   name="waveStartShip"
-                  value={formData.waveStartShip}
+                  value="placeholder"
                   onChange={(e) => handleChange(e)}
                   autoComplete="off"
                 />
@@ -274,12 +190,12 @@ const WholesaleWaveTable = () => {
                   type="text"
                   placeholder="Cancel Date"
                   name="waveCancelDate"
-                  value={formData.waveCancelDate}
+                  value="placeholder"
                   onChange={(e) => handleChange(e)}
                   autoComplete="off"
                 />
               </th>
-              {/* <th
+              <th
                 scope="col"
                 className="sm:text-xs xl:text-sm mx-2 px-4 bg-purple-300"
               >
@@ -288,7 +204,7 @@ const WholesaleWaveTable = () => {
                   type="text"
                   placeholder="Tender Date"
                   name="waveTenderDate"
-                  value={formData.waveTenderDate}
+                  value="placeholder"
                   onChange={(e) => handleChange(e)}
                   autoComplete="off"
                 />
@@ -302,26 +218,12 @@ const WholesaleWaveTable = () => {
                   type="text"
                   placeholder="Ship Date"
                   name="waveShipDate"
-                  value={formData.waveShipDate}
-                  onChange={(e) => handleChange(e)}
-                  autoComplete="off"
-                />
-              </th> */}
-              <th
-                scope="col"
-                className="sm:text-xs xl:text-sm mx-2 px-4 bg-orange-300"
-              >
-                <input
-                  className="w-24 text-xs text-center"
-                  type="text"
-                  placeholder="Printed"
-                  name="wavePrinted"
-                  value={formData.wavePrinted}
+                  value="placeholder"
                   onChange={(e) => handleChange(e)}
                   autoComplete="off"
                 />
               </th>
-            </tr>
+            </tr> */}
             <tr className="flex items-center">
               <th className="w-full">
                 <button className="p-2 rounded-lg hover:scale-110 hover:ease-in text-xs">
@@ -332,25 +234,8 @@ const WholesaleWaveTable = () => {
           </tbody>
         </table>
       </Form>
-
-      <datalist id="locations">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-      </datalist>
-
-      <datalist id="customers">
-        <option value="Dillards">Dillards</option>
-        <option value="Belk">Belk</option>
-        <option value="Macys">Macys</option>
-        <option value="AAFES">AAFES</option>
-        <option value="Zappos">Zappos</option>
-        <option value="Marine">Marine</option>
-        <option value="Navy Exchange">Navy Exchange</option>
-      </datalist>
     </div>
   );
 };
 
-export default WholesaleWaveTable;
+export default UnscheduleWaveList;

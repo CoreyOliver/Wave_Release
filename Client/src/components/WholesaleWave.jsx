@@ -144,8 +144,8 @@ const WholesaleWave = ({
           autoComplete="off"
         ></input>
       </th>
-      <th scope="col" className="sm:text-xs xl:text-sm mx-2 px-4 bg-purple-300">
-        <input
+      {/* <th scope="col" className="sm:text-xs xl:text-sm mx-2 px-4 bg-purple-300"> */}
+        {/* <input
           className="w-24 text-xs text-center text-black rounded-lg"
           type="text"
           value={waveLineData.tenderDate}
@@ -163,7 +163,7 @@ const WholesaleWave = ({
           name="updateshipDate"
           autoComplete="off"
         ></input>
-      </th>
+      </th> */}
       <th
         scope="col"
         className="sm:text-xs xl:text-sm mx-2 px-4 bg-orange-300 "
@@ -203,8 +203,8 @@ const WholesaleWave = ({
               waveLineData.units,
               waveLineData.startShip,
               waveLineData.cancelDate,
-              waveLineData.tenderDate,
-              waveLineData.shipDate,
+              // waveLineData.tenderDate,
+              // waveLineData.shipDate,
             )
           }
           cursor="pointer"
@@ -243,12 +243,12 @@ const WholesaleWave = ({
       <th scope="col" className="sm:text-xs xl:text-sm mx-2 px-4 bg-red-300">
         {cancelDate}
       </th>
-      <th scope="col" className="sm:text-xs xl:text-sm mx-2 px-4 bg-purple-300">
+      {/* <th scope="col" className="sm:text-xs xl:text-sm mx-2 px-4 bg-purple-300">
         {tenderDate}
       </th>
       <th scope="col" className="sm:text-xs xl:text-sm mx-2 px-4 bg-purple-300">
         {shipDate}
-      </th>
+      </th> */}
       <th
         scope="col"
         className="sm:text-xs xl:text-sm mx-2 px-4 bg-orange-300 "

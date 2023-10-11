@@ -1,3 +1,3 @@
 export const handleDateClick = (date) => {
-    console.log(date)
+    console.log('clicked')
 }

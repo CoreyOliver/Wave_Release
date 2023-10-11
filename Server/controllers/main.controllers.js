@@ -17,7 +17,7 @@ module.exports = {
       const [rows] = await connectDB.query(
         "select whLocation, waveNumber, units, printed, date_format(date, '%m/%d') as waveDate, Upper(user) as user, comments FROM `webdata` ORDER BY waveNumber asc"
       );
-      console.log("got web root");
+      console.log(rows, "got web root");
       res.json(rows);
     } catch (error) {
       console.log(error);
@@ -34,25 +34,27 @@ module.exports = {
       console.log(error);
     }
   },
-  getCalendarData: async(req,res) => {
+  getCalendarData: async (req, res) => {
     try {
-      const [rows] = "select customer, SUM(unitCount) as 'dateTotal', shipDate FROM wholesaledata Group BY customer, shipDate order by shipDate asc;"
-      console.log(rows)
-        //get this data right here
-      const events = [
-        { title: '1 Dillards 10/31', date: '2023-10-11'},
-        { title: '2 Dillards 10/31', date: '2023-10-27'},
-        { title: '3 Dillards 10/31', date: '2023-10-22'},
-        { title: '4 Dillards 10/31', date: '2023-10-27'},
-        { title: '5 Dillards 10/31', date: '2023-10-27'},
-        { title: '6 Dillards 10/31', date: '2023-10-26'},
-        { title: '7 Dillards 10/31', date: '2023-10-30'},
-        { title: '8 Dillards 10/31', date: '2023-10-27'},
-        { title: '9 Dillards 10/31', date: '2023-10-25'},
-        { title: '20 Dillards [123456]', date: '2023-10-31'}
-      ]
-      res.json(events)
-      console.log('got calendar root')
+      const [rows] = await connectDB.query(
+        "select Concat(customer,' [',SUM(unitCount),']') as title, date_format(shipDate, '%Y-%m-%d') as date FROM wholesaledata Group BY customer, shipDate order by shipDate asc;"
+      );
+      console.log(
+        "this one"
+        // ,rows
+      );
+      res.json(rows);
+      console.log("got calendar root");
+    } catch (error) {
+      console.log(error);
+    }
+  },
+  getUnscheduledWaves: async (req, res) => {
+    try {
+      const [rows] = await connectDB.query("select whLocation, waveNumber,customer,unitCount,date_format(startShip, '%m/%d') as startShip,      date_format(cancelDate, '%m/%d') as cancelDate,date_format(tenderDate, '%m/%d') as tenderDate,    date_format(shipDate, '%m/%d') as shipDate, printed, date_format(waveDate, '%m/%d') as waveDate, Upper(user) as user FROM `wholesaleData` WHERE tenderDate is NULL AND shipDate is NULL;")
+      console.log(rows, 'got unscheduled')
+      res.json(rows)
+      
     } catch (error) {
       console.log(error)
     }
@@ -72,18 +74,25 @@ module.exports = {
     };
     const startShipToAdd = updateDate(req.body.waveStartShip);
     const cancelDateToAdd = updateDate(req.body.waveCancelDate);
-    const shipDateToAdd = updateDate(req.body.waveShipDate);
-    const tenderDateToAdd = updateDate(req.body.waveTenderDate);
+    // const shipDateToAdd = updateDate(req.body.waveShipDate);
+    // const tenderDateToAdd = updateDate(req.body.waveTenderDate);
     const waveDateToAdd = updateDate(req.body.waveDate);
     try {
+      // with tender and ship date
+      // const [rows] = await connectDB.query(
+      //   `INSERT INTO wave_release.wholesaleData (whLocation, waveNumber, customer, unitCount, startShip, cancelDate, tenderDate, shipDate, printed, waveDate, user) VALUES ('${
+      //     req.body.waveLocation
+      //   }', '${req.body.waveNumber}', '${req.body.waveCustomer}', '${
+      //     req.body.waveCount
+      //   }', '${startShipToAdd}', '${cancelDateToAdd}', '${tenderDateToAdd}', '${shipDateToAdd}',
+      // '${req.body.wavePrinted}', '${waveDateToAdd}', '${req.body.waveUser.toUpperCase()}');`
+      // );
       const [rows] = await connectDB.query(
-        `INSERT INTO wave_release.wholesaleData (whLocation, waveNumber, customer, unitCount, startShip, cancelDate, tenderDate, shipDate, printed, waveDate, user) VALUES ('${
+        `INSERT INTO wave_release.wholesaleData (whLocation, waveNumber, customer, unitCount, startShip, cancelDate, printed, waveDate, user) VALUES ('${
           req.body.waveLocation
         }', '${req.body.waveNumber}', '${req.body.waveCustomer}', '${
           req.body.waveCount
-        }', '${startShipToAdd}', '${cancelDateToAdd}', '${tenderDateToAdd}', '${shipDateToAdd}', '${
-          req.body.wavePrinted
-        }', '${waveDateToAdd}', '${req.body.waveUser.toUpperCase()}');`
+        }', '${startShipToAdd}', '${cancelDateToAdd}', '${req.body.wavePrinted}', '${waveDateToAdd}', '${req.body.waveUser.toUpperCase()}');`
       );
 
       res.json(rows);
@@ -104,13 +113,19 @@ module.exports = {
       }
       return `${currentYear}-${month}-${day}`;
     };
-    const waveDateToAdd = updateDate(req.body.waveDate)
+    const waveDateToAdd = updateDate(req.body.waveDate);
     try {
       console.log(req.body);
       const [rows] = await connectDB.query(
-        `INSERT INTO wave_release.webdata (whLocation, date, user, waveNumber, units, comments, printed) VALUES ('${req.body.waveLocation}', '${waveDateToAdd}','${req.body.waveUser.toUpperCase()}','${req.body.waveNumber}','${req.body.waveCount}','${req.body.waveComment}','${req.body.wavePrinted}');`
+        `INSERT INTO wave_release.webdata (whLocation, date, user, waveNumber, units, comments, printed) VALUES ('${
+          req.body.waveLocation
+        }', '${waveDateToAdd}','${req.body.waveUser.toUpperCase()}','${
+          req.body.waveNumber
+        }','${req.body.waveCount}','${req.body.waveComment}','${
+          req.body.wavePrinted
+        }');`
       );
-      res.json(rows)
+      res.json(rows);
     } catch (error) {
       console.log(error);
     }

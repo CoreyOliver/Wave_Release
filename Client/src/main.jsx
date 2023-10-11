@@ -9,18 +9,19 @@ import ErrorPage from "./components/ErrorPage.jsx";
 import WholesaleWaveTable from "./components/WholesaleWaveTable.jsx";
 import WebWaveTable from "./components/WebWaveTable.jsx";
 import CalendarContainer from "./components/CalendarContainer.jsx";
+import UnscheduleWaveList from "./components/UnscheduleWaveList.jsx";
 
 //styling
 import "./index.css";
 
 //actions & loaders
 
-// import {loader as getWaves} from './components/WaveTable.jsx';
 import { loader as getWholesaleWaves } from "./components/WholesaleWaveTable.jsx";
 import { action as addWholesaleWave } from "./function/addWholesaleWave.action.js";
 import { loader as getWebWaves } from "./components/WebWaveTable.jsx";
 import {action as addWebWave } from "./function/addWebWave.action.js"
 import {loader as getCalendarData} from "./components/CalendarContainer.jsx"
+import { loader as getUnscheduledWaves} from "./components/UnscheduleWaveList.jsx"
  
 //router
 
@@ -46,6 +47,11 @@ const router = createBrowserRouter([
         path: "/calendar",
         loader: getCalendarData,
         element: <CalendarContainer />,
+      },
+      {
+        path: "/unscheduled",
+        loader: getUnscheduledWaves,
+        element: <UnscheduleWaveList />
       }
     ],
   },

@@ -40,6 +40,13 @@ WIP:
         []shows number of units waved for historic data
     [] set up the loader data controller. the fetch works just need to pull the data
 
+[x] remove ship and tender date
+[]set up for component to add ship and tender dates in batch
+    [] table in batch header to update whatever is chosen
+    [] set up batch edit function
+        []add each date to form? 
+            []select one date and apply it to as many as we want?
+
 
 clean up later:
 

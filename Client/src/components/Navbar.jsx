@@ -12,14 +12,16 @@ const Navbar = () => {
                 Wholesale Enter
               </li>
             </NavLink>
+            <NavLink to="unscheduled">
+              <li className="ml-10 text-sm uppercase hover:border-b hover:bg-slate-500 hover:rounded-xl">
+                Batch
+              </li>
+            </NavLink>
             <NavLink to="webs">
               <li className="ml-10 text-sm uppercase hover:border-b hover:bg-slate-500 hover:rounded-xl">
                 Web Enter
               </li>
             </NavLink>
-            <li className="ml-10 text-sm uppercase hover:border-b hover:bg-slate-500 hover:rounded-xl">
-              Batch
-            </li>
             <NavLink to="/calendar">
               <li className="ml-10 text-sm uppercase hover:border-b hover:bg-slate-500 hover:rounded-xl">
                 Calendar
