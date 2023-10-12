@@ -1,4 +1,3 @@
-
 export const deleteSelectedWave = async (waveToDelete) => {
   try {
     const res = await fetch(`http://localhost:3000/delete/${waveToDelete}`, {
@@ -33,7 +32,7 @@ export const updateWavePrinted = async (waveToUpdate, oldPrinted) => {
 export const getSingleWaveData = async (wave) => {
   try {
     const res = await fetch(`http://localhost:3000/getOneWave/${wave}`);
-    return res
+    return res;
   } catch (error) {
     console.log(error);
   }
@@ -48,7 +47,7 @@ export const editWave = async (
   startShip,
   cancelDate,
   tenderDate,
-  shipDate,
+  shipDate
 ) => {
   const waveUpdate = {
     location: location,
@@ -87,7 +86,7 @@ export const copyWaveLine = (
   shipDate,
   user
 ) => {
-  setFormData((prevState) =>  {
+  setFormData((prevState) => {
     return {
       ...prevState,
       waveLocation: location,
@@ -99,7 +98,15 @@ export const copyWaveLine = (
       waveTenderDate: tenderDate,
       waveShipDate: shipDate,
       waveUser: user,
-    }
+    };
   });
-  
+};
+
+export const getCurrentDate = () => {
+  const date = new Date();
+  let day = date.getDate();
+  let month = date.getMonth() + 1;
+  let year = date.getFullYear();
+  let currentDate = `${month}-${day}-${year}`
+  return currentDate
 };

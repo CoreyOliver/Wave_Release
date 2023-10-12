@@ -43,6 +43,7 @@ WIP:
 [x] remove ship and tender date
 []set up for component to add ship and tender dates in batch
     [] table in batch header to update whatever is chosen
+        [] update dates to show
     [] set up batch edit function
         []add each date to form? 
             []select one date and apply it to as many as we want?
