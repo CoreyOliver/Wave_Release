@@ -22,15 +22,6 @@ const UnscheduledWholesaleWave = ({
     location: location,
   });
 
-  const handleLineChange = (e) => {
-    console.log(e)
-    // setWaveLineData((prevState) => {
-    //   return {
-    //     ...prevState,
-    //     [e.target.name.split("update")[1]]: e.target.value,
-    //   };
-    // });
-  };
   return (
     <tr>
       <th scope="col" className="sm:text-xs xl:text-sm mx-2 px-4 bg-orange-300">
@@ -57,6 +48,12 @@ const UnscheduledWholesaleWave = ({
       </th>
       <th scope="col" className="sm:text-xs xl:text-sm mx-2 px-4 bg-red-300">
         {waveLineData.cancelDate}
+      </th>
+      <th scope="col" className="sm:text-xs xl:text-sm mx-2 px-4 bg-lime-300">
+        <input 
+          type="checkbox" 
+          defaultChecked={false}
+        />
       </th>
     </tr>
   );

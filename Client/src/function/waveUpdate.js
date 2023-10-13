@@ -107,6 +107,6 @@ export const getCurrentDate = () => {
   let day = date.getDate();
   let month = date.getMonth() + 1;
   let year = date.getFullYear();
-  let currentDate = `${month}-${day}-${year}`
+  let currentDate = `${year}-${month}-${day}`
   return currentDate
 };
