@@ -18,16 +18,17 @@ export async function loader() {
 const UnscheduleWaveList = () => {
   const unscheduledWaves = useLoaderData();
 
+  
   //state to hold values from DB
   const [wavesToSchedule, setWavesToSchedule] = useState(unscheduledWaves);
-
+  
   //state to hold values for req to DB
   const [wavesToUpdate, setWavesToUpdate] = useState({
     shipDate: getCurrentDate(),
     tenderDate: getCurrentDate(),
     toUpdate: [],
   });
-
+  
   //debugging
   useEffect(() => {
     console.log(wavesToSchedule, wavesToUpdate);
@@ -38,8 +39,17 @@ const UnscheduleWaveList = () => {
     setWavesToUpdate((prevState) => {
       return {
         ...prevState,
-          [e.target.name]: e.target.value
+        [e.target.name]: e.target.value,
+      };
+    });
+  };
 
+  //handle check change for selection
+  const handleSelectionChange = (e) => {
+    setWavesToUpdate((prevState) => {
+      return {
+        ...prevState,
+        //if "toupdate inclused the wave , remove, else add"
       }
     })
   }
@@ -56,6 +66,7 @@ const UnscheduleWaveList = () => {
       startShip={wave.startShip}
       cancelDate={wave.cancelDate}
       user={wave.user}
+      handleSelectionChange={handleSelectionChange}
     />
   ));
 
@@ -88,9 +99,9 @@ const UnscheduleWaveList = () => {
             autoComplete="off"
           ></input>
         </label>
-              <button className="px-4 rounded-xl hover:scale-110 hover:ease-in text-sm">
-                Add
-              </button>
+        <button className="px-4 rounded-xl hover:scale-110 hover:ease-in text-sm">
+          Add
+        </button>
       </Form>
       <table className="table mx-4 mt-4 pb-8">
         <thead>
@@ -130,9 +141,7 @@ const UnscheduleWaveList = () => {
             </th>
           </tr>
         </thead>
-        <tbody>
-          {unscheduledWavesToList}
-        </tbody>
+        <tbody>{unscheduledWavesToList}</tbody>
       </table>
     </div>
   );

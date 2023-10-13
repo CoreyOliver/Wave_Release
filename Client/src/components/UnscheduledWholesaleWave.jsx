@@ -9,6 +9,7 @@ const UnscheduledWholesaleWave = ({
   startShip,
   cancelDate,
   user,
+  handleSelectionChange
 }) => {
   const [waveLineData, setWaveLineData] = useState({
     date: date,
@@ -53,6 +54,8 @@ const UnscheduledWholesaleWave = ({
         <input 
           type="checkbox" 
           defaultChecked={false}
+          name={waveLineData.wave}
+          onChange={() => handleSelectionChange(waveLineData.wave)}
         />
       </th>
     </tr>
