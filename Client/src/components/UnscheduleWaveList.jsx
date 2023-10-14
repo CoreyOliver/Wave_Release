@@ -18,17 +18,16 @@ export async function loader() {
 const UnscheduleWaveList = () => {
   const unscheduledWaves = useLoaderData();
 
-  
   //state to hold values from DB
   const [wavesToSchedule, setWavesToSchedule] = useState(unscheduledWaves);
-  
+
   //state to hold values for req to DB
   const [wavesToUpdate, setWavesToUpdate] = useState({
     shipDate: getCurrentDate(),
     tenderDate: getCurrentDate(),
     toUpdate: [],
   });
-  
+
   //debugging
   useEffect(() => {
     console.log(wavesToSchedule, wavesToUpdate);
@@ -46,13 +45,17 @@ const UnscheduleWaveList = () => {
 
   //handle check change for selection
   const handleSelectionChange = (e) => {
-    setWavesToUpdate((prevState) => {
-      return {
-        ...prevState,
-        //if "toupdate inclused the wave , remove, else add"
-      }
-    })
-  }
+    console.log(wavesToUpdate.toUpdate);
+    const waveToAdd = e;
+    if (!wavesToUpdate.toUpdate.includes(waveToAdd)) {
+      setWavesToUpdate((prevState) => {
+        return {
+          ...prevState,
+          
+        }
+      })
+    }
+  };
 
   //map out the data into lines
   const unscheduledWavesToList = wavesToSchedule.map((wave) => (
