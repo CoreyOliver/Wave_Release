@@ -45,15 +45,15 @@ const UnscheduleWaveList = () => {
 
   //handle check change for selection
   const handleSelectionChange = (e) => {
-    console.log(wavesToUpdate.toUpdate);
     const waveToAdd = e;
     if (!wavesToUpdate.toUpdate.includes(waveToAdd)) {
       setWavesToUpdate((prevState) => {
         return {
           ...prevState,
-          
-        }
-      })
+          toUpdate: [...prevState.toUpdate, waveToAdd],
+        };
+      });
+      console.log(wavesToUpdate.toUpdate);
     }
   };
 
