@@ -45,16 +45,26 @@ const UnscheduleWaveList = () => {
 
   //handle check change for selection
   const handleSelectionChange = (e) => {
-    const waveToAdd = e;
-    if (!wavesToUpdate.toUpdate.includes(waveToAdd)) {
+    const waveToChange = e;
+    if (!wavesToUpdate.toUpdate.includes(waveToChange)) {
       setWavesToUpdate((prevState) => {
         return {
           ...prevState,
-          toUpdate: [...prevState.toUpdate, waveToAdd],
+          toUpdate: [...prevState.toUpdate, waveToChange],
         };
       });
-      console.log(wavesToUpdate.toUpdate);
     }
+    else {
+      setWavesToUpdate((prevState) => {
+        return {
+          ...prevState,
+          toUpdate: [...prevState.toUpdate.filter(wave=> {
+            wave != waveToChange
+          })],
+        };
+      });
+    }
+    console.log(wavesToUpdate.toUpdate);
   };
 
   //map out the data into lines

@@ -53,6 +53,10 @@ const UnscheduledWholesaleWave = ({
       <th scope="col" className="sm:text-xs xl:text-sm mx-2 px-4 bg-lime-300">
         <input 
           type="checkbox" 
+          //set up the check for whether it's in the toUpdate Array
+            //set up for checked. add checked as a attribute from the wave list. set up function
+            // to read the state and render out as checked if it's true:
+          // checked={}
           defaultChecked={false}
           name={waveLineData.wave}
           onChange={() => handleSelectionChange(waveLineData.wave)}

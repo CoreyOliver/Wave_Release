@@ -49,7 +49,8 @@ WIP:
             []select one date and apply it to as many as we want?
 
 [] finish up the select function
-    [] need to add the wave to the array if it doesn't already exist in it
+    [x] need to add the wave to the array if it doesn't already exist in it
+    [] set up so check list shows if its in the toUpdate array
 
 
 clean up later:
