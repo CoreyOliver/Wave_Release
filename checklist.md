@@ -50,6 +50,7 @@ WIP:
 
 [] finish up the select function
     [x] need to add the wave to the array if it doesn't already exist in it
+    [] confirm that items are removed from toUpdate array
     [] set up so check list shows if its in the toUpdate array
 
 
