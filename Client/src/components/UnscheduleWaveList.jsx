@@ -29,9 +29,9 @@ const UnscheduleWaveList = () => {
   });
 
   //debugging
-  useEffect(() => {
-    console.log(wavesToSchedule, wavesToUpdate);
-  }, [wavesToUpdate]);
+  // useEffect(() => {
+  //   console.log( wavesToUpdate);
+  // }, [wavesToUpdate]);
 
   //handle date changes
   const handleDateSelectChange = (e) => {
@@ -46,7 +46,24 @@ const UnscheduleWaveList = () => {
   //handle check change for selection
   const handleSelectionChange = (e) => {
     const waveToChange = e;
-    if (!wavesToUpdate.toUpdate.includes(waveToChange)) {
+    console.log(
+      waveToChange,
+      wavesToUpdate.toUpdate.filter((wave) => {
+        wave != waveToChange;
+      })
+    );
+    if (wavesToUpdate.toUpdate.includes(waveToChange)) {
+      setWavesToUpdate((prevState) => {
+        return {
+          ...prevState,
+          toUpdate: [
+            ...prevState.toUpdate.filter((wave) => {
+              return wave !== waveToChange;
+            }),
+          ],
+        };
+      });
+    } else {
       setWavesToUpdate((prevState) => {
         return {
           ...prevState,
@@ -54,17 +71,12 @@ const UnscheduleWaveList = () => {
         };
       });
     }
-    else {
-      setWavesToUpdate((prevState) => {
-        return {
-          ...prevState,
-          toUpdate: [...prevState.toUpdate.filter(wave=> {
-            wave != waveToChange
-          })],
-        };
-      });
-    }
     console.log(wavesToUpdate.toUpdate);
+  };
+
+  //see if its ready to update
+  const checkThisWave = (wave) => {
+    return wavesToUpdate.toUpdate.includes(wave);
   };
 
   //map out the data into lines
@@ -80,6 +92,7 @@ const UnscheduleWaveList = () => {
       cancelDate={wave.cancelDate}
       user={wave.user}
       handleSelectionChange={handleSelectionChange}
+      checkThisWave={checkThisWave}
     />
   ));
 
@@ -112,6 +125,14 @@ const UnscheduleWaveList = () => {
             autoComplete="off"
           ></input>
         </label>
+        {/* for form data and to see what's in the array */}
+        <input
+          type="text"
+          className="hidden"
+          name="toUpdate"
+          readOnly
+          value={wavesToUpdate.toUpdate}
+        />
         <button className="px-4 rounded-xl hover:scale-110 hover:ease-in text-sm">
           Add
         </button>

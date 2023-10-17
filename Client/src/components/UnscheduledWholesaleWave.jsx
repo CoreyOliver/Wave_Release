@@ -9,7 +9,9 @@ const UnscheduledWholesaleWave = ({
   startShip,
   cancelDate,
   user,
-  handleSelectionChange
+  handleSelectionChange,
+  checkThisWave,
+  
 }) => {
   const [waveLineData, setWaveLineData] = useState({
     date: date,
@@ -22,9 +24,13 @@ const UnscheduledWholesaleWave = ({
     edit: false,
     location: location,
   });
+  
+  const isItChecked = checkThisWave(wave)
 
   return (
-    <tr>
+    <tr
+      className={ isItChecked ? 'scale-105' : ''}   
+    >
       <th scope="col" className="sm:text-xs xl:text-sm mx-2 px-4 bg-orange-300">
         {waveLineData.date}
       </th>
@@ -56,8 +62,7 @@ const UnscheduledWholesaleWave = ({
           //set up the check for whether it's in the toUpdate Array
             //set up for checked. add checked as a attribute from the wave list. set up function
             // to read the state and render out as checked if it's true:
-          // checked={}
-          defaultChecked={false}
+          checked={checkThisWave(waveLineData.wave)}
           name={waveLineData.wave}
           onChange={() => handleSelectionChange(waveLineData.wave)}
         />

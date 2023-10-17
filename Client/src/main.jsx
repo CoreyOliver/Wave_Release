@@ -22,6 +22,7 @@ import { loader as getWebWaves } from "./components/WebWaveTable.jsx";
 import {action as addWebWave } from "./function/addWebWave.action.js"
 import {loader as getCalendarData} from "./components/CalendarContainer.jsx"
 import { loader as getUnscheduledWaves} from "./components/UnscheduleWaveList.jsx"
+import { action as updateUnscheduledWaves } from "./function/updateShipDate.action.js"
  
 //router
 
@@ -51,7 +52,8 @@ const router = createBrowserRouter([
       {
         path: "/unscheduled",
         loader: getUnscheduledWaves,
-        element: <UnscheduleWaveList />
+        element: <UnscheduleWaveList />,
+        action: updateUnscheduledWaves
       }
     ],
   },

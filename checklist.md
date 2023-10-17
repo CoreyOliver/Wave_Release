@@ -52,6 +52,7 @@ WIP:
     [x] need to add the wave to the array if it doesn't already exist in it
     [] confirm that items are removed from toUpdate array
     [] set up so check list shows if its in the toUpdate array
+    [] why is it pulling all of the items in to do out?
 
 
 clean up later:
