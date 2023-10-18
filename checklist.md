@@ -29,6 +29,10 @@ TO DO:
 [] add confirmation for delete
     [] prompt for are you sure
 
+[] page to pull all date
+    [] query by ship date  & customer
+    []allow editing
+
 
 WIP:
 
