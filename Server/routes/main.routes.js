@@ -11,7 +11,9 @@ router.get('/unsWaves', mainControllers.getUnscheduledWaves)
 
 //POST
 router.post('/add/WS', mainControllers.addWholesaleWave)
+router.post('/addDates/WS', mainControllers.updateShipDates)
 router.post('/add/web', mainControllers.addWebWave)
+
 
 //PUT
 router.put('/edit/:wave', mainControllers.editWave)

@@ -40,19 +40,7 @@ WIP:
         []shows number of units waved for historic data
     [] set up the loader data controller. the fetch works just need to pull the data
 
-[x] remove ship and tender date
-[]set up for component to add ship and tender dates in batch
-    [] table in batch header to update whatever is chosen
-        [] update dates to show
-    [] set up batch edit function
-        []add each date to form? 
-            []select one date and apply it to as many as we want?
 
-[] finish up the select function
-    [x] need to add the wave to the array if it doesn't already exist in it
-    [] confirm that items are removed from toUpdate array
-    [] set up so check list shows if its in the toUpdate array
-    [] why is it pulling all of the items in to do out?
 
 
 clean up later:
@@ -64,6 +52,21 @@ clean up later:
     [] mass update needs permissions?
 
 completed:
+
+[x] remove ship and tender date
+[x]set up for component to add ship and tender dates in batch
+    [x] table in batch header to update whatever is chosen
+        [x] update dates to show
+    [x] set up batch edit function
+        [x]add each date to form? 
+            [x]select one date and apply it to as many as we want?
+
+[x] finish up the select function
+    [x] need to add the wave to the array if it doesn't already exist in it
+    [x] confirm that items are removed from toUpdate array
+    [x] set up so check list shows if its in the toUpdate array
+    [x] why is it pulling all of the items in to do out?
+        [x] dumb - didn't return the new state 
 
 [x] continue the request - created object for request.
     [x] created object

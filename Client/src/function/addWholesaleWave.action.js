@@ -2,6 +2,7 @@ export async function action({ request }) {
   const formData = await request.formData();
   const waves = Object.fromEntries(formData);
   console.log(waves);
+  //add some check
   if (
     waves.waveCancelDate !== "" &&
     waves.waveCount !== "" &&
@@ -27,10 +28,9 @@ export async function action({ request }) {
       console.log(error);
       return null
     }
+    //make sure none of the empties are empty else throw an error
   } else {
     alert('please fill all values')
     return null
   }
-  //add some check
-  //make sure none of the empties are empty else throw an error
 }
