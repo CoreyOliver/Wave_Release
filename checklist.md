@@ -31,7 +31,10 @@ TO DO:
 
 [] page to pull all date
     [] query by ship date  & customer
-    []allow editing
+    [] allow editing
+
+[]calendar select dates
+    [] select shipment on calendar and set up to another page
 
 
 WIP:
