@@ -41,7 +41,7 @@ const WholesaleWaveTable = () => {
     units,
     user,
     startShip,
-    cancelDate,
+    cancelDate
     // tenderDate,
     // shipDate,
   ) => {
@@ -163,7 +163,6 @@ const WholesaleWaveTable = () => {
             </tr>
           </thead>
           <tbody>
-            {wholesaleWavesToList}
             <tr className="">
               <th
                 scope="col"
@@ -280,33 +279,33 @@ const WholesaleWaveTable = () => {
                 />
               </th>
               {/* <th
-                scope="col"
-                className="sm:text-xs xl:text-sm mx-2 px-4 bg-purple-300"
-              >
-                <input
-                  className="w-24 text-xs text-center"
-                  type="text"
-                  placeholder="Tender Date"
-                  name="waveTenderDate"
-                  value={formData.waveTenderDate}
-                  onChange={(e) => handleChange(e)}
-                  autoComplete="off"
-                />
-              </th>
-              <th
-                scope="col"
-                className="sm:text-xs xl:text-sm mx-2 px-4 bg-purple-300"
-              >
-                <input
-                  className="w-24 text-xs text-center"
-                  type="text"
-                  placeholder="Ship Date"
-                  name="waveShipDate"
-                  value={formData.waveShipDate}
-                  onChange={(e) => handleChange(e)}
-                  autoComplete="off"
-                />
-              </th> */}
+        scope="col"
+        className="sm:text-xs xl:text-sm mx-2 px-4 bg-purple-300"
+      >
+        <input
+          className="w-24 text-xs text-center"
+          type="text"
+          placeholder="Tender Date"
+          name="waveTenderDate"
+          value={formData.waveTenderDate}
+          onChange={(e) => handleChange(e)}
+          autoComplete="off"
+        />
+      </th>
+      <th
+        scope="col"
+        className="sm:text-xs xl:text-sm mx-2 px-4 bg-purple-300"
+      >
+        <input
+          className="w-24 text-xs text-center"
+          type="text"
+          placeholder="Ship Date"
+          name="waveShipDate"
+          value={formData.waveShipDate}
+          onChange={(e) => handleChange(e)}
+          autoComplete="off"
+        />
+      </th> */}
               <th
                 scope="col"
                 className="sm:text-xs xl:text-sm mx-2 px-4 bg-orange-300"
@@ -329,6 +328,7 @@ const WholesaleWaveTable = () => {
                 </button>
               </th>
             </tr>
+            {wholesaleWavesToList}
           </tbody>
         </table>
       </Form>
