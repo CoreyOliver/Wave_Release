@@ -14,6 +14,7 @@ export async function loader() {
 
 const CalendarContainer = () => {
   const eventData = useLoaderData()
+  console.log(eventData)
   const [wsCalendarEvents, setWsCalendarEvents] = useState(eventData);
 
   useEffect(()=> console.log(wsCalendarEvents),[wsCalendarEvents])
