@@ -39,11 +39,16 @@ module.exports = {
       const [rows] = await connectDB.query(
         "select Concat(customer,' [',SUM(unitCount),']') as title, date_format(shipDate, '%Y-%m-%d') as date FROM wholesaledata Group BY customer, shipDate order by shipDate asc;"
       );
-      console.log(
-        "this one"
+      const [columns] = await connectDB.query(
+        "select Concat(customer,' ', date_format(shipDate, '%m-%d')) as title, date_format(tenderDate, '%Y-%m-%d') as date FROM wholesaledata order by tenderDate asc;"
       );
-      res.json(rows);
+      const rowsU = rows.map(x => ({...x, color:'red'}))
+      const columnsU = columns.map(x => ({...x, color:'blue'}))
+      res.json(rowsU);
       console.log("got calendar root");
+      console.log(
+        // rowsU, 
+        columnsU);
     } catch (error) {
       console.log(error);
     }
@@ -52,6 +57,7 @@ module.exports = {
     try {
       const [rows] = await connectDB.query("select whLocation, waveNumber,customer,unitCount,date_format(startShip, '%m/%d') as startShip,      date_format(cancelDate, '%m/%d') as cancelDate,date_format(tenderDate, '%m/%d') as tenderDate,    date_format(shipDate, '%m/%d') as shipDate, printed, date_format(waveDate, '%m/%d') as waveDate, Upper(user) as user FROM `wholesaleData` WHERE tenderDate is NULL OR shipDate is NULL;")
       console.log('got unscheduled')
+      
       res.json(rows)
       
     } catch (error) {
