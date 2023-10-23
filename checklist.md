@@ -33,8 +33,10 @@ TO DO:
     [] query by ship date  & customer
     [] allow editing
 
-[]calendar select dates
+[]calendar
     [] select shipment on calendar and set up to another page
+        [] onselect event - show all the orders for that date
+    []change colors for events
 
 
 WIP:
