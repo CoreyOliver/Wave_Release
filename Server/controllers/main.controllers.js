@@ -36,19 +36,25 @@ module.exports = {
   },
   getCalendarData: async (req, res) => {
     try {
+      //ship date data
       const [rows] = await connectDB.query(
         "select Concat(customer,' [',SUM(unitCount),']') as title, date_format(shipDate, '%Y-%m-%d') as date FROM wholesaledata Group BY customer, shipDate order by shipDate asc;"
       );
+      //tender date pull
+        //needs to be distinct/unique
       const [columns] = await connectDB.query(
         "select Concat(customer,' ', date_format(shipDate, '%m-%d')) as title, date_format(tenderDate, '%Y-%m-%d') as date FROM wholesaledata order by tenderDate asc;"
       );
-      const rowsU = rows.map(x => ({...x, color:'red'}))
-      const columnsU = columns.map(x => ({...x, color:'blue'}))
-      res.json(rowsU);
+      const rowsU = rows.map(x => ({...x, color:'blue'}))
+      const columnsU = columns.map(x => ({...x, color:'grey'}))
+      const calendarData = [...rowsU, ...columnsU]
+      res.json(calendarData);
       console.log("got calendar root");
       console.log(
         // rowsU, 
-        columnsU);
+        // columnsU,
+        calendarData
+        );
     } catch (error) {
       console.log(error);
     }
