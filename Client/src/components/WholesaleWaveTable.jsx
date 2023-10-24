@@ -96,7 +96,7 @@ const WholesaleWaveTable = () => {
 
   return (
     <div className="pt-32 flex justify-center items-center px-8 mx-auto">
-      <Form method="POST" id="wholesaleAddForm" className="">
+      <Form method="POST" id="wholesaleAddForm" className="pb-8">
         <table className="table mx-4 mt-4 pb-8">
           <thead>
             <tr className="">
@@ -348,6 +348,17 @@ const WholesaleWaveTable = () => {
         <option value="Zappos">Zappos</option>
         <option value="Marine">Marine</option>
         <option value="Navy Exchange">Navy Exchange</option>
+        <option value="Saddle Creek">Saddle Creek</option>
+        <option value="Summit">Summit</option>
+        <option value="Atlanta">Atlanta</option>
+        <option value="San Marcos">San Marcos</option>
+        <option value="Fairhaven">Fairhaven</option>
+        <option value="Houston">Houston</option>
+        <option value="Newport">Newport</option>
+        <option value="South Park">South Park</option>
+        <option value="Orlando">Orlando</option>
+        <option value="Palm Beach">Palm Beach</option>
+        <option value="BLW Stores">BLW Stores</option>
       </datalist>
     </div>
   );

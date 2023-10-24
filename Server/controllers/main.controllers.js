@@ -4,7 +4,7 @@ module.exports = {
   getWSRoot: async (req, res) => {
     try {
       const [rows] = await connectDB.query(
-        "select whLocation, waveNumber,customer,unitCount,date_format(startShip, '%m/%d') as startShip,      date_format(cancelDate, '%m/%d') as cancelDate,date_format(tenderDate, '%m/%d') as tenderDate,    date_format(shipDate, '%m/%d') as shipDate, printed, date_format(waveDate, '%m/%d') as waveDate, Upper(user) as user FROM `wholesaleData` ORDER BY waveNumber desc"
+        "select whLocation, waveNumber,customer,unitCount,date_format(startShip, '%m/%d') as startShip,      date_format(cancelDate, '%m/%d') as cancelDate,date_format(tenderDate, '%m/%d') as tenderDate,    date_format(shipDate, '%m/%d') as shipDate, printed, date_format(waveDate, '%m/%d') as waveDate, Upper(user) as user FROM `wholesaleData` ORDER BY waveNumber desc LIMIT 50"
       );
       console.log("got root");
       res.json(rows);
@@ -38,12 +38,12 @@ module.exports = {
     try {
       //ship date data
       const [rows] = await connectDB.query(
-        "select Concat(customer,' [',SUM(unitCount),']') as title, date_format(shipDate, '%Y-%m-%d') as date FROM wholesaledata Group BY customer, shipDate order by shipDate asc;"
+        "select Concat(' ',customer,' [',SUM(unitCount),']') as title, date_format(shipDate, '%Y-%m-%d') as date FROM wholesaledata Group BY customer, shipDate order by shipDate asc;"
       );
       //tender date pull
         //needs to be distinct/unique
       const [columns] = await connectDB.query(
-        "select Concat(customer,' ', date_format(shipDate, '%m-%d')) as title, date_format(tenderDate, '%Y-%m-%d') as date FROM wholesaledata order by tenderDate asc;"
+        "select distinct Concat(customer,' ', date_format(shipDate, '%m-%d')) as title, date_format(tenderDate, '%Y-%m-%d') as date, tenderDate FROM wholesaledata Where Not (customer='Atlanta' OR customer='Orlando' OR customer='Palm Beach' OR customer='Houston' OR customer='Summit' OR customer='Saddle Creek' OR customer='South Park' OR customer='San Marcos'  OR customer='Newport' OR customer='Stores' OR customer='Fairhaven'OR customer='BLW Stores' ) order by tenderDate asc;"
       );
       const rowsU = rows.map(x => ({...x, color:'blue'}))
       const columnsU = columns.map(x => ({...x, color:'grey'}))
