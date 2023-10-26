@@ -35,6 +35,7 @@ const CalendarContainer = () => {
         plugins={[dayGridPlugin, interactionsPlugin]}
         initialView="dayGridMonth"
         dateClick={(date)=>handleDateClick(date)}
+        
       />
     </div>
   );
