@@ -34,7 +34,7 @@ const CalendarContainer = () => {
         events={wsCalendarEvents}
         plugins={[dayGridPlugin, interactionsPlugin]}
         initialView="dayGridMonth"
-        dateClick={(date)=>handleDateClick(date)}
+        eventClick={(date)=>handleDateClick(date.el.innerText)}
         
       />
     </div>
