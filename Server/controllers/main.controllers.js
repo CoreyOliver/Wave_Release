@@ -43,10 +43,10 @@ module.exports = {
       //tender date pull
         //needs to be distinct/unique
       const [columns] = await connectDB.query(
-        "select distinct Concat(customer,' ', date_format(shipDate, '%m-%d')) as title, date_format(tenderDate, '%Y-%m-%d') as date, tenderDate FROM wholesaledata Where Not (customer='Atlanta' OR customer='Orlando' OR customer='Palm Beach' OR customer='Houston' OR customer='Summit' OR customer='Saddle Creek' OR customer='South Park' OR customer='San Marcos'  OR customer='Newport' OR customer='Stores' OR customer='Fairhaven'OR customer='BLW Stores' ) order by tenderDate asc;"
+        "select distinct Concat(customer,' ', date_format(shipDate, '%m-%d')) as title, date_format(tenderDate, '%Y-%m-%d') as date, tenderDate, date_format(shipdate, '%Y-%m-%d') as DateShip FROM wholesaledata Where Not (customer='Atlanta' OR customer='Orlando' OR customer='Palm Beach' OR customer='Houston' OR customer='Summit' OR customer='Saddle Creek' OR customer='South Park' OR customer='San Marcos'  OR customer='Newport' OR customer='Stores' OR customer='Fairhaven'OR customer='BLW Stores' ) order by tenderDate asc;"
       );
-      const rowsU = rows.map(x => ({...x, color:'blue', groupId:'shipGroup'}))
-      const columnsU = columns.map(x => ({...x, color:'grey', groupId:'tenderGroup'}))
+      const rowsU = rows.map(x => ({...x, color:'blue'}))
+      const columnsU = columns.map(x => ({...x, color:'grey'}))
       const calendarData = [...rowsU, ...columnsU]
       res.json(calendarData);
       console.log("got calendar root");
