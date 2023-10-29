@@ -23,9 +23,9 @@ Task:
 TO DO:
 
 
-[] mass edit dates for customer
-    []  update WHERE cust and date are xxxxx
-
+[x] mass edit dates for customer
+    [x]  update WHERE cust and date are xxxxx
+        [x] select function and add all 'selected' waves to sql query
 [] add confirmation for delete
     [] prompt for are you sure
 
@@ -33,7 +33,7 @@ TO DO:
     [x] query by ship date  & customer
     [x] allow editing
         [] add the wave data to edit each wave
-        [] set up for all the waves to add to a manifest
+        [] set up for all the waves to add to a manifesta
 
 []calendar
     [] select shipment on calendar and set up to another page
