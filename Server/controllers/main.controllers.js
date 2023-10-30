@@ -51,7 +51,7 @@ module.exports = {
       res.json(calendarData);
       console.log("got calendar root");
       console.log(
-        // rowsU, 
+        rowsU, 
         // columnsU,
         calendarData
         );
