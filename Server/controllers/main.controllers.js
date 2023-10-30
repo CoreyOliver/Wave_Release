@@ -38,14 +38,14 @@ module.exports = {
     try {
       //ship date data
       const [rows] = await connectDB.query(
-        "select Concat(' ',customer,' [',SUM(unitCount),']') as title, date_format(shipDate, '%Y-%m-%d') as date FROM wholesaledata Group BY customer, shipDate order by shipDate asc;"
+        "select Concat(' ',customer,' [',SUM(unitCount),']') as title, date_format(shipDate, '%Y-%m-%d') as date, date_format(shipdate, '%Y-%m-%d') as DateShip, customer FROM wholesaledata Group BY customer, shipDate order by shipDate asc;"
       );
       //tender date pull
         //needs to be distinct/unique
       const [columns] = await connectDB.query(
         "select distinct Concat(customer,' ', date_format(shipDate, '%m-%d')) as title, date_format(tenderDate, '%Y-%m-%d') as date, tenderDate, date_format(shipdate, '%Y-%m-%d') as DateShip FROM wholesaledata Where Not (customer='Atlanta' OR customer='Orlando' OR customer='Palm Beach' OR customer='Houston' OR customer='Summit' OR customer='Saddle Creek' OR customer='South Park' OR customer='San Marcos'  OR customer='Newport' OR customer='Stores' OR customer='Fairhaven'OR customer='BLW Stores' ) order by tenderDate asc;"
       );
-      const rowsU = rows.map(x => ({...x, color:'blue'}))
+      const rowsU = rows.map(x => ({...x, color:'blue', url:`http://localhost:5173/dateCheck/${x.customer}/${x.DateShip}`}))
       const columnsU = columns.map(x => ({...x, color:'grey'}))
       const calendarData = [...rowsU, ...columnsU]
       res.json(calendarData);
@@ -53,7 +53,7 @@ module.exports = {
       console.log(
         rowsU, 
         // columnsU,
-        calendarData
+        // calendarData
         );
     } catch (error) {
       console.log(error);

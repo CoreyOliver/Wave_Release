@@ -10,6 +10,7 @@ import WholesaleWaveTable from "./components/WholesaleWaveTable.jsx";
 import WebWaveTable from "./components/WebWaveTable.jsx";
 import CalendarContainer from "./components/CalendarContainer.jsx";
 import UnscheduleWaveList from "./components/UnscheduleWaveList.jsx";
+import ShipDateInfo from "./components/ShipDateInfo.jsx";
 
 //styling
 import "./index.css";
@@ -54,6 +55,12 @@ const router = createBrowserRouter([
         loader: getUnscheduledWaves,
         element: <UnscheduleWaveList />,
         action: updateUnscheduledWaves
+      },
+      {
+        //user params in the loader here
+        path: "/dateCheck/:customer/:shipDate",
+        // loader: getShipDateInfo,
+        element: <ShipDateInfo />
       }
     ],
   },

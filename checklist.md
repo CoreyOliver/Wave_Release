@@ -38,6 +38,7 @@ TO DO:
         [] onselect event - show all the orders for that date
         [x] create page to map out the data - <ShipDateInfo />
             [] use the URL tag in fullcalendar as a link?
+            [] set up to pull params in teh loader functionS
     []change colors for events
         []multiple data events 
             []update the controller to get there
