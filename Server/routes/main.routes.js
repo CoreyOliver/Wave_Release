@@ -8,6 +8,7 @@ router.get('/web', mainControllers.getWebRoot)
 router.get('/getOneWave/:wave', mainControllers.getOneWave)
 router.get('/calendarGet', mainControllers.getCalendarData)
 router.get('/unsWaves', mainControllers.getUnscheduledWaves)
+router.get('/dateCheck/:customer/:shipDate', mainControllers.getEventDataByWave)
 
 //POST
 router.post('/add/WS', mainControllers.addWholesaleWave)

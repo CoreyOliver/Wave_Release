@@ -24,6 +24,7 @@ import {action as addWebWave } from "./function/addWebWave.action.js"
 import {loader as getCalendarData} from "./components/CalendarContainer.jsx"
 import { loader as getUnscheduledWaves} from "./components/UnscheduleWaveList.jsx"
 import { action as updateUnscheduledWaves } from "./function/updateShipDate.action.js"
+import {loader as getShipDateInfo } from "./components/ShipDateInfo.jsx"
  
 //router
 
@@ -59,7 +60,7 @@ const router = createBrowserRouter([
       {
         //user params in the loader here
         path: "/dateCheck/:customer/:shipDate",
-        // loader: getShipDateInfo,
+        loader: async  ( { params } ) => getShipDateInfo(params),
         element: <ShipDateInfo />
       }
     ],
