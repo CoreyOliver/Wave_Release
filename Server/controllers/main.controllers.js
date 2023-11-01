@@ -74,7 +74,7 @@ module.exports = {
     try {
       //finish this query
       console.log(req.params)
-      const [wavesByEventData] = await connectDB.query(`select whLocation, waveNumber,customer,unitCount,date_format(startShip, '%m/%d') as startShip,      date_format(cancelDate, '%m/%d') as cancelDate,date_format(tenderDate, '%m/%d') as tenderDate,    date_format(shipDate, '%m/%d') as shipDate, printed, date_format(waveDate, '%m/%d') as waveDate, user FROM wave_release.wholesaledata WHERE(customer = ${req.params.customer} AND shipDate = ${req.params.shipDate})`)
+      const [wavesByEventData] = await connectDB.query(`select whLocation, waveNumber,customer,unitCount,date_format(startShip, '%m/%d') as startShip, date_format(cancelDate, '%m/%d') as cancelDate,date_format(tenderDate, '%m/%d') as tenderDate,    date_format(shipDate, '%m/%d') as shipDate FROM wave_release.wholesaledata WHERE(customer = '${req.params.customer}' AND shipDate = '${req.params.shipDate}');`)
       console.log('got event wave data')
       res.json(wavesByEventData)
 
