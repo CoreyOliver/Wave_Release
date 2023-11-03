@@ -30,8 +30,10 @@ TO DO:
     [] prompt for are you sure
 
 [] page to pull all date
-    [] query by ship date  & customer
-    [] allow editing
+    [x] query by ship date  & customer
+    [x] allow editing
+        [] add the wave data to edit each wave
+        [] set up for all the waves to add to a manifest
 
 []calendar
     [] select shipment on calendar and set up to another page
