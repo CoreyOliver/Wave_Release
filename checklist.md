@@ -33,17 +33,20 @@ TO DO:
     [x] query by ship date  & customer
     [x] allow editing
         [] add the wave data to edit each wave
-        [] set up for all the waves to add to a manifesta
+        [] set up for all the waves to add to a manifest
 
 []calendar
-    [] select shipment on calendar and set up to another page
+    [x] select shipment on calendar and set up to another page
         [] onselect event - show all the orders for that date
         [x] create page to map out the data - <ShipDateInfo />
-            [] use the URL tag in fullcalendar as a link?
-            [] set up to pull params in teh loader functionS
-    []change colors for events
-        []multiple data events 
-            []update the controller to get there
+            [x] use the URL tag in fullcalendar as a link?
+            [x] set up to pull params in teh loader functionS
+    [x]change colors for events
+        [x]multiple data events 
+            [x]update the controller to get there
+    []
+    []
+    []
 
 
 WIP:
