@@ -45,9 +45,13 @@ module.exports = {
       const [columns] = await connectDB.query(
         "select distinct Concat(customer,' ', date_format(shipDate, '%m-%d')) as title, date_format(tenderDate, '%Y-%m-%d') as date, tenderDate, date_format(shipdate, '%Y-%m-%d') as DateShip FROM wholesaledata Where Not (customer='Atlanta' OR customer='Orlando' OR customer='Palm Beach' OR customer='Houston' OR customer='Summit' OR customer='Saddle Creek' OR customer='South Park' OR customer='San Marcos'  OR customer='Newport' OR customer='Stores' OR customer='Fairhaven'OR customer='BLW Stores' ) order by tenderDate asc;"
       );
+
+      const [tiers] = await connectDB.query("SELECT date_format(date, '%Y-%m-%d') as 'date', CONCAT('Webs [',SUM(units),']') as 'title' from webdata GROUP BY date;");
+
       const rowsU = rows.map(x => ({...x, color:'blue', url:`http://localhost:5173/dateCheck/${x.customer}/${x.DateShip}`}))
       const columnsU = columns.map(x => ({...x, color:'grey'}))
-      const calendarData = [...rowsU, ...columnsU]
+      const tiersU = tiers.map(x => ({...x, color:'green'}))
+      const calendarData = [...rowsU, ...columnsU, ...tiersU]
       res.json(calendarData);
       console.log("got calendar root");
       console.log(
