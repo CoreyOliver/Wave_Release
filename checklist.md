@@ -60,7 +60,7 @@ WIP:
     [x] set up the loader data controller. the fetch works just need to pull the data
 
 
-
+[x] update data as of 11/7
 
 clean up later:
 
