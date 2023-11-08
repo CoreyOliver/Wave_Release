@@ -78,7 +78,7 @@ module.exports = {
     try {
       //finish this query
       console.log(req.params)
-      const [wavesByEventData] = await connectDB.query(`select whLocation, waveNumber,customer,unitCount,date_format(startShip, '%m/%d') as startShip, date_format(cancelDate, '%m/%d') as cancelDate,date_format(tenderDate, '%m/%d') as tenderDate,    date_format(shipDate, '%m/%d') as shipDate FROM wave_release.wholesaledata WHERE(customer = '${req.params.customer}' AND shipDate = '${req.params.shipDate}');`)
+      const [wavesByEventData] = await connectDB.query(`select whLocation, date_format(waveDate, '%m/%d') as date, waveNumber,customer,unitCount,date_format(startShip, '%m/%d') as startShip, date_format(cancelDate, '%m/%d') as cancelDate,date_format(tenderDate, '%m/%d') as tenderDate, date_format(shipDate, '%m/%d') as shipDate, printed, user FROM wave_release.wholesaledata WHERE(customer = '${req.params.customer}' AND shipDate = '${req.params.shipDate}');`)
       console.log('got event wave data')
       res.json(wavesByEventData)
 
@@ -165,15 +165,16 @@ module.exports = {
     console.log(req.body);
     const startShipToEdit = updateDate(req.body.startShip);
     const cancelDateToEdit = updateDate(req.body.cancelDate);
-    const shipDateToEdit = updateDate(req.body.shipDate);
-    const tenderDateToEdit = updateDate(req.body.tenderDate);
+    // const shipDateToEdit = updateDate(req.body.shipDate);
+    // const tenderDateToEdit = updateDate(req.body.tenderDate);
     try {
       //debuggin
       console.log(req.body);
       //add the query
       //we want to select the correct wave from the request
       const [rows] = await connectDB.query(
-        `UPDATE wave_release.wholesaledata SET whLocation = ${req.body.location}, waveNumber = ${req.body.wave}, customer = '${req.body.customer}', unitCount = ${req.body.units},startShip = '${startShipToEdit}', cancelDate = '${cancelDateToEdit}',tenderDate = '${tenderDateToEdit}',shipDate = '${shipDateToEdit}',user = '${req.body.user}' WHERE(waveNumber = ${req.body.wave});`
+        `UPDATE wave_release.wholesaledata SET whLocation = ${req.body.location}, waveNumber = ${req.body.wave}, customer = '${req.body.customer}', unitCount = ${req.body.units},startShip = '${startShipToEdit}', cancelDate = '${cancelDateToEdit}',
+        user = '${req.body.user}' WHERE(waveNumber = ${req.body.wave});`
       );
       //update the line with all of the data from the request on each column
       //object is good to go

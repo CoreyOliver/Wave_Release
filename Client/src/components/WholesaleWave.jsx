@@ -28,6 +28,7 @@ const WholesaleWave = ({
 }) => {
   const [waveLineData, setWaveLineData] = useState({
     wave: wave,
+    date: date,
     customer: customer,
     units: units,
     startShip: startShip,
@@ -198,13 +199,13 @@ const WholesaleWave = ({
         scope="col"
         className="sm:text-xs xl:text-sm mx-2 px-2 bg-blue-300 hidden md:table-cell"
       >
-        {location}
+        {waveLineData.location}
       </th>
       <th
         scope="col"
         className="sm:text-xs xl:text-sm mx-2 px-4 bg-yellow-300 hidden md:table-cell"
       >
-        {user}
+        {waveLineData.user}
       </th>
       <th scope="col" className="sm:text-xs xl:text-sm mx-2 px-4 bg-pink-300">
         {wave}

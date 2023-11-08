@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useLoaderData, Form } from "react-router-dom";
 import WholesaleWave from "./WholesaleWave";
 
+import { deleteSelectedWave, editWave } from "../function/waveUpdate";
+
 export async function loader({ customer, shipDate }) {
   console.log(customer, shipDate);
   const res = await fetch(
@@ -15,27 +17,28 @@ const ShipDateInfo = () => {
   const wavesList = useLoaderData();
   const [waveData, setWaveData] = useState(wavesList);
 
-  const customerDateList = wavesList.map((x) => ` ${x.waveNumber},`);
-  const calendarWavesList = wavesList.map((wave) => (
+  const customerDateList = waveData.map((x) => ` ${x.waveNumber},`);
+  const calendarWavesList = waveData.map((wave) => (
     <WholesaleWave
       key={wave.waveNumber}
       location={wave.whLocation}
-      // date={wave.waveDate}
+      date={wave.date}
       wave={wave.waveNumber}
       customer={wave.customer}
       units={wave.unitCount}
       startShip={wave.startShip}
       cancelDate={wave.cancelDate}
-      // tenderDate={wave.tenderDate}
-      // shipDate={wave.shipDate}
-      // printed={wave.printed}
-      // user={wave.user}
-      // editWave={editWave}
-      // selectItemToUpdate={selectItemToUpdate}
+      tenderDate={wave.tenderDate}
+      shipDate={wave.shipDate}
+      printed={wave.printed}
+      user={wave.user}
+      deleteSelectedWave={deleteSelectedWave}
+      editWave={editWave}
     />
   ));
 
-  console.log(customerDateList);
+  console.log(waveData)
+  console.log(calendarWavesList);
 
   return (
     <div className="pt-32 flex-col px-8 mx-auto">
