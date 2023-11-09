@@ -1,8 +1,8 @@
 Task:
 
 [***] grid layout set up for entering in wave data
-    [] organize by location
-    [] organize by order type
+    [x] organize by location
+    [x] organize by order type
 
 [] send data to db to pull and visualize
     [x]SQL
@@ -32,12 +32,12 @@ TO DO:
 [] page to pull all date
     [x] query by ship date  & customer
     [x] allow editing
-        [] add the wave data to edit each wave
+        [x] add the wave data to edit each wave
         [] set up for all the waves to add to a manifest
 
 []calendar
     [x] select shipment on calendar and set up to another page
-        [] onselect event - show all the orders for that date
+        [x] onselect event - show all the orders for that date
         [x] create page to map out the data - <ShipDateInfo />
             [x] use the URL tag in fullcalendar as a link?
             [x] set up to pull params in teh loader functionS

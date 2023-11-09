@@ -21,6 +21,7 @@ router.put('/edit/:wave', mainControllers.editWave)
 router.put('/updatePrinted/:wave/:oldPrinted', mainControllers.editWavePrinted)
 router.put('/updateWebPrinted/:wave/:oldPrinted', mainControllers.editWebWavePrinted)
 router.put('/editWave', mainControllers.editWave)
+router.put('/editCalendarWave', mainControllers.editCalendarWave)
 
 
 //Delete

@@ -75,6 +75,39 @@ export const editWave = async (
   }
 };
 
+export const editCalendarWave = async (
+  wave,
+  customer,
+  units,
+  startShip,
+  cancelDate,
+  tenderDate,
+  shipDate
+) => {
+  const waveUpdate = {
+    wave: wave,
+    customer: customer,
+    units: units,
+    startShip: startShip,
+    cancelDate: cancelDate,
+    tenderDate: tenderDate,
+    shipDate: shipDate,
+  };
+  try {
+    const res = await fetch("http://localhost:3000/editCalendarWave", {
+      method: "PUT",
+      body: JSON.stringify(waveUpdate),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    // const newData = await getSingleWaveData(waveUpdate.wave)
+    window.location.reload();
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const copyWaveLine = (
   location,
   wave,

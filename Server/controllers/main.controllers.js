@@ -184,6 +184,41 @@ module.exports = {
       console.log(error);
     }
   },
+  editCalendarWave: async (req, res) => {
+    //date set up
+    const updateDate = (date) => {
+      const currentYear = new Date().getFullYear();
+      let month = date.split("/")[0];
+      let day = date.split("/")[1];
+      if (month.length < 2) {
+        month = `0${month}`;
+      }
+      if (day.length < 2) {
+        day = `0${day}`;
+      }
+      return `${currentYear}-${month}-${day}`;
+    };
+    console.log(req.body);
+    const startShipToEdit = updateDate(req.body.startShip);
+    const cancelDateToEdit = updateDate(req.body.cancelDate);
+    const shipDateToEdit = updateDate(req.body.shipDate);
+    const tenderDateToEdit = updateDate(req.body.tenderDate);
+    try {
+      //debuggin
+      console.log(req.body);
+      //add the query
+      //we want to select the correct wave from the request
+      const [rows] = await connectDB.query(
+        `UPDATE wave_release.wholesaledata SET waveNumber = ${req.body.wave}, customer = '${req.body.customer}', unitCount = ${req.body.units}, startShip = '${startShipToEdit}', cancelDate = '${cancelDateToEdit}', shipDate = '${shipDateToEdit}', tenderDate = '${tenderDateToEdit}' WHERE(waveNumber = ${req.body.wave});`
+      );
+      //update the line with all of the data from the request on each column
+      //object is good to go
+      res.json(rows);
+      //take the object and query sql to take care of it
+    } catch (error) {
+      console.log(error);
+    }
+  },
   updateShipDates: async (req, res) => {
     const { tenderDate, shipDate, toUpdate } = req.body
     const waveListToUpdate = `waveNumber = ${toUpdate.join(' OR waveNumber = ')}`

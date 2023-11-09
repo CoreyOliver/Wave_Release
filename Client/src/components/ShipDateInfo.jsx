@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useLoaderData, Form } from "react-router-dom";
-import WholesaleWave from "./WholesaleWave";
+import CalendarWholesaleWave from "./CalendarWholesaleWave";
 
-import { deleteSelectedWave, editWave } from "../function/waveUpdate";
+import { deleteSelectedWave, editCalendarWave } from "../function/waveUpdate";
 
 export async function loader({ customer, shipDate }) {
   console.log(customer, shipDate);
@@ -19,10 +19,8 @@ const ShipDateInfo = () => {
 
   const customerDateList = waveData.map((x) => ` ${x.waveNumber},`);
   const calendarWavesList = waveData.map((wave) => (
-    <WholesaleWave
+    <CalendarWholesaleWave
       key={wave.waveNumber}
-      location={wave.whLocation}
-      date={wave.date}
       wave={wave.waveNumber}
       customer={wave.customer}
       units={wave.unitCount}
@@ -30,14 +28,12 @@ const ShipDateInfo = () => {
       cancelDate={wave.cancelDate}
       tenderDate={wave.tenderDate}
       shipDate={wave.shipDate}
-      printed={wave.printed}
-      user={wave.user}
       deleteSelectedWave={deleteSelectedWave}
-      editWave={editWave}
+      editCalendarWave={editCalendarWave}
     />
   ));
 
-  console.log(waveData)
+  console.log(waveData);
   console.log(calendarWavesList);
 
   return (
@@ -55,24 +51,6 @@ const ShipDateInfo = () => {
             <table className="table mx-4 mt-4 pb-8">
               <thead>
                 <tr className="">
-                  <th
-                    scope="col"
-                    className="mx-2 px-4 bg-orange-400 border-slate-600"
-                  >
-                    Date
-                  </th>
-                  <th
-                    scope="col"
-                    className="mx-2 px-2 bg-blue-400 border-slate-600 hidden md:table-cell"
-                  >
-                    WH
-                  </th>
-                  <th
-                    scope="col"
-                    className="mx-2 px-4 bg-yellow-400 border-slate-600 hidden md:table-cell"
-                  >
-                    Waver
-                  </th>
                   <th
                     scope="col"
                     className="mx-2 px-4 bg-pink-400 border-slate-600"
@@ -105,145 +83,19 @@ const ShipDateInfo = () => {
                   </th>
                   <th
                     scope="col"
-                    className="mx-2 px-4 bg-orange-400 border-slate-600"
+                    className="mx-2 px-4 bg-cyan-400 border-slate-600"
                   >
-                    Printed
+                    Tender Date
+                  </th>
+                  <th
+                    scope="col"
+                    className="mx-2 px-4 bg-cyan-400 border-slate-600"
+                  >
+                    Ship Date
                   </th>
                 </tr>
               </thead>
-              <tbody>
-                {/* <tr className="">
-                  <th
-                    scope="col"
-                    className="sm:text-xs xl:text-sm mx-2 px-4 bg-orange-300"
-                  >
-                    <input
-                      className="w-24 text-xs text-center"
-                      type="text"
-                      placeholder="Date"
-                      name="waveDate"
-                      value={formData.waveDate}
-                      onChange={(e) => handleChange(e)}
-                      autoComplete="off"
-                    />
-                  </th>
-                  <th
-                    scope="col"
-                    className="sm:text-xs xl:text-sm mx-2 px-4 bg-blue-300"
-                  >
-                    <input
-                      className="w-24 text-xs text-center"
-                      type="list"
-                      list="locations"
-                      placeholder="WH"
-                      name="waveLocation"
-                      value={formData.waveLocation}
-                      onChange={(e) => handleChange(e)}
-                      autoComplete="off"
-                    />
-                  </th>
-                  <th
-                    scope="col"
-                    className="sm:text-xs xl:text-sm mx-2 px-4 bg-yellow-300 hidden md:table-cell"
-                  >
-                    <input
-                      className="w-24 text-xs text-center"
-                      type="text"
-                      placeholder="Waver"
-                      name="waveUser"
-                      value={formData.waveUser}
-                      onChange={(e) => handleChange(e)}
-                      autoComplete="off"
-                    />
-                  </th>
-                  <th
-                    scope="col"
-                    className="sm:text-xs xl:text-sm mx-2 px-4 bg-pink-300"
-                  >
-                    <input
-                      className="w-24 text-xs text-center"
-                      type="text"
-                      placeholder="Wave Number"
-                      name="waveNumber"
-                      value={formData.waveNumber}
-                      onChange={(e) => handleChange(e)}
-                      autoComplete="off"
-                    />
-                  </th>
-                  <th
-                    scope="col"
-                    className="sm:text-xs xl:text-sm mx-2 px-4 bg-indigo-300"
-                  >
-                    <input
-                      className="w-24 text-xs text-center"
-                      type="list"
-                      list="customers"
-                      placeholder="Customer"
-                      name="waveCustomer"
-                      value={formData.waveCustomer}
-                      onChange={(e) => handleChange(e)}
-                      autoComplete="off"
-                    />
-                  </th>
-                  <th
-                    scope="col"
-                    className="sm:text-xs xl:text-sm mx-2 px-4 bg-green-300"
-                  >
-                    <input
-                      className="w-24 text-xs text-center"
-                      type="text"
-                      placeholder="Unit Count"
-                      name="waveCount"
-                      value={formData.waveCount}
-                      onChange={(e) => handleChange(e)}
-                      autoComplete="off"
-                    />
-                  </th>
-                  <th
-                    scope="col"
-                    className="sm:text-xs xl:text-sm mx-2 px-4 bg-red-300"
-                  >
-                    <input
-                      className="w-24 text-xs text-center"
-                      type="text"
-                      placeholder="Start Ship"
-                      name="waveStartShip"
-                      value={formData.waveStartShip}
-                      onChange={(e) => handleChange(e)}
-                      autoComplete="off"
-                    />
-                  </th>
-                  <th
-                    scope="col"
-                    className="sm:text-xs xl:text-sm mx-2 px-4 bg-red-300"
-                  >
-                    <input
-                      className="w-24 text-xs text-center"
-                      type="text"
-                      placeholder="Cancel Date"
-                      name="waveCancelDate"
-                      value={formData.waveCancelDate}
-                      onChange={(e) => handleChange(e)}
-                      autoComplete="off"
-                    />
-                  </th>
-                  <th
-                    scope="col"
-                    className="sm:text-xs xl:text-sm mx-2 px-4 bg-orange-300"
-                  >
-                    <input
-                      className="w-24 text-xs text-center"
-                      type="text"
-                      placeholder="Printed"
-                      name="wavePrinted"
-                      value={formData.wavePrinted}
-                      onChange={(e) => handleChange(e)}
-                      autoComplete="off"
-                    />
-                  </th>
-                </tr> */}
-                {calendarWavesList}
-              </tbody>
+              <tbody>{calendarWavesList}</tbody>
             </table>
           </Form>
 
@@ -261,7 +113,7 @@ const ShipDateInfo = () => {
             <option value="AAFES">AAFES</option>
             <option value="Zappos">Zappos</option>
             <option value="Marine">Marine</option>
-            <option value="Navy Exchange">Navy Exchange</option>
+            <option value="Navy">Navy Exchange</option>
             <option value="Saddle Creek">Saddle Creek</option>
             <option value="Summit">Summit</option>
             <option value="Atlanta">Atlanta</option>
